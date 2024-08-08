@@ -20,16 +20,12 @@ import ProjectsSection from "@/components/ProjectsSection";
 import Education from "@/components/Education";
 import Hobbies from "@/components/Hobbies";
 import Resume from "@/components/Resume";
+import MasitasSection from "@/components/MasitasSection";
 export default function Home() {
   return (
     <section className="flex flex-col ">
       <HeroSection />
-
-      <ModulesSection />
-      <Resume />
-
-      <ProjectsSection />
-
+      <MasitasSection />
       <FooterSection />
     </section>
   );

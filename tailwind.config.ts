@@ -37,17 +37,26 @@ const config = {
 
         // Modo oscuro
         'blue-dark': '#1c537d', // blue-25
-        'yellow-dark': '#FFC107', // yellow-25
-        'background-dark': '#23272A', // black-50
+        'yellow-dark': '#FFC107', // #FFC107 
+        'background-dark': '#F2A19E', //  #23272A
         'off-white': '#f5f5f5',
-        'background-darker': '#18181B', // black-50
-        
+        'background-darker': '#ED7370', // #18181B
+
         "custom-white":"#f2f2f2",
         "custom-blue": "#006692",
         "custom-yellow": "#ffe17e",
         "custom-orange": "#F5A67E",
         "custom-gray": "#8992a6",
-        "custom-background": "#23272A",
+        "custom-background": "#ED7370",
+        
+        "custom-brown":"#341713",
+        "custom-brown-light":"#B76540",
+        // "custom-white":"#f2f2f2",
+        // "custom-blue": "#006692",
+        // "custom-yellow": "#ffe17e",
+        // "custom-orange": "#F5A67E",
+        // "custom-gray": "#8992a6",
+        // "custom-background": "#23272A",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
