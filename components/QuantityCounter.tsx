@@ -10,20 +10,30 @@ interface QuantityCounterProps {
   p_u3: number;
   p_u4: number;
   p_u5: number;
+  onQuantityChange: (quantity: number, totalPrice: number) => void; // Modificación para enviar cantidad y precio total
 }
 
-const QuantityCounter: React.FC<QuantityCounterProps> = ({ minQuantity, initialQuantity = minQuantity, p_u1, p_u2, p_u3, p_u4, p_u5 }) => {
+const QuantityCounter: React.FC<QuantityCounterProps> = ({
+  minQuantity,
+  initialQuantity = minQuantity,
+  p_u1,
+  p_u2,
+  p_u3,
+  p_u4,
+  p_u5,
+  onQuantityChange,
+}) => {
   const [quantity, setQuantity] = useState(initialQuantity);
   const [totalPrice, setTotalPrice] = useState(0);
-  const incrementRef = useRef<NodeJS.Timeout | null>(null);
-  const decrementRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const delayRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     calculateTotalPrice(quantity);
   }, [quantity]);
 
-  const handleIncrement = () => setQuantity(prev => prev + 1);
-  const handleDecrement = () => setQuantity(prev => (prev > minQuantity ? prev - 1 : prev));
+  const handleIncrement = () => setQuantity((prev) => prev + 1);
+  const handleDecrement = () => setQuantity((prev) => (prev > minQuantity ? prev - 1 : prev));
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuantity(parseInt(event.target.value, 10));
@@ -51,62 +61,70 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({ minQuantity, initialQ
     }
 
     const total = quantity * pricePerUnit;
-    setTotalPrice(Math.ceil(total));
+    const roundedTotal = Math.ceil(total);
+    setTotalPrice(roundedTotal);
+    onQuantityChange(quantity, roundedTotal); // Notifica al padre
   };
 
   const startIncrement = () => {
-    handleIncrement();
-    incrementRef.current = setInterval(handleIncrement, 200);
+    handleIncrement(); // Primera suma
+    delayRef.current = setTimeout(() => {
+      intervalRef.current = setInterval(handleIncrement, 150);
+    }, 600); // Inicia el intervalo después de 0.8 segundos
   };
 
   const startDecrement = () => {
-    handleDecrement();
-    decrementRef.current = setInterval(handleDecrement, 200);
+    handleDecrement(); // Primera resta
+    delayRef.current = setTimeout(() => {
+      intervalRef.current = setInterval(handleDecrement, 150);
+    }, 600); // Inicia el intervalo después de 0.8 segundos
   };
 
   const stopInterval = () => {
-    if (incrementRef.current) {
-      clearInterval(incrementRef.current);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
     }
-    if (decrementRef.current) {
-      clearInterval(decrementRef.current);
+    if (delayRef.current) {
+      clearTimeout(delayRef.current);
     }
   };
 
   return (
     <div className="flex flex-col items-center space-y-2">
-      {/* Precio Total oculto */}
+      <div className="text-lg font-bold">
+        Precio Total: Bs {totalPrice.toFixed(2)}
+      </div>
       <div className="flex items-center space-x-4">
-        <button 
+        <button
           className="btn btn-decrement border rounded bg-white p-2"
           onMouseDown={startDecrement}
           onMouseUp={stopInterval}
           onMouseLeave={stopInterval}
-          onTouchStart={startDecrement}    // Manejo de eventos táctiles
-          onTouchEnd={stopInterval}        // Manejo de eventos táctiles
+          onTouchStart={startDecrement}
+          onTouchEnd={stopInterval}
           disabled={quantity <= minQuantity}
         >
           <Minus size={20} />
         </button>
-        <input 
-          type="number" 
-          value={quantity} 
-          onChange={handleQuantityChange} 
+        <input
+          type="number"
+          value={quantity}
+          onChange={handleQuantityChange}
           onBlur={handleBlur}
           className="w-16 text-center border border-gray-300 rounded p-2 bg-white focus:outline-none focus:border-gray-500"
           style={{
             MozAppearance: 'textfield',
             WebkitAppearance: 'none',
           }}
-          onFocus={(event) => event.target.select()} // Selecciona todo el texto al hacer clic
+          onFocus={(event) => event.target.select()}
         />
-        <button 
+        <button
           className="btn btn-increment border rounded bg-white p-2"
           onMouseDown={startIncrement}
           onMouseUp={stopInterval}
           onMouseLeave={stopInterval}
-          onTouchStart={startIncrement}    // Manejo de eventos táctiles
-          onTouchEnd={stopInterval}        // Manejo de eventos táctiles
+          onTouchStart={startIncrement}
+          onTouchEnd={stopInterval}
         >
           <Plus size={20} />
         </button>

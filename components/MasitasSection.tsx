@@ -79,7 +79,126 @@ const masitas: Masita[] = [
     p_u4: 2.25,
     p_u5: 2.00
   },
-
+  {
+    nombre: "Masita de Frutilla",
+    precio: 30.00,
+    imagen_lowres: "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+    imagenes: [
+    "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png"
+    ],
+    p_u1: 3.00,
+    p_u2: 2.75,
+    p_u3: 2.50,
+    p_u4: 2.25,
+    p_u5: 2.00
+  },
+  {
+    nombre: "Masita de Frutilla",
+    precio: 30.00,
+    imagen_lowres: "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+    imagenes: [
+    "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png"
+    ],
+    p_u1: 3.00,
+    p_u2: 2.75,
+    p_u3: 2.50,
+    p_u4: 2.25,
+    p_u5: 2.00
+  },
+  {
+    nombre: "Masita de Frutilla",
+    precio: 30.00,
+    imagen_lowres: "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+    imagenes: [
+    "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png"
+    ],
+    p_u1: 3.00,
+    p_u2: 2.75,
+    p_u3: 2.50,
+    p_u4: 2.25,
+    p_u5: 2.00
+  },
+  {
+    nombre: "Masita de Frutilla",
+    precio: 30.00,
+    imagen_lowres: "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+    imagenes: [
+    "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png"
+    ],
+    p_u1: 3.00,
+    p_u2: 2.75,
+    p_u3: 2.50,
+    p_u4: 2.25,
+    p_u5: 2.00
+  },
+  {
+    nombre: "Masita de Frutilla",
+    precio: 30.00,
+    imagen_lowres: "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+    imagenes: [
+    "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png"
+    ],
+    p_u1: 3.00,
+    p_u2: 2.75,
+    p_u3: 2.50,
+    p_u4: 2.25,
+    p_u5: 2.00
+  },
+  {
+    nombre: "Masita de Frutilla",
+    precio: 30.00,
+    imagen_lowres: "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+    imagenes: [
+    "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png"
+    ],
+    p_u1: 3.00,
+    p_u2: 2.75,
+    p_u3: 2.50,
+    p_u4: 2.25,
+    p_u5: 2.00
+  },
+  {
+    nombre: "Masita de Frutilla",
+    precio: 30.00,
+    imagen_lowres: "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+    imagenes: [
+    "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png"
+    ],
+    p_u1: 3.00,
+    p_u2: 2.75,
+    p_u3: 2.50,
+    p_u4: 2.25,
+    p_u5: 2.00
+  },
+  {
+    nombre: "Masita de Frutilla",
+    precio: 30.00,
+    imagen_lowres: "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+    imagenes: [
+    "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
+    "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png"
+    ],
+    p_u1: 3.00,
+    p_u2: 2.75,
+    p_u3: 2.50,
+    p_u4: 2.25,
+    p_u5: 2.00
+  },
 ];
 
 export const MasitasSection = () => {
@@ -87,7 +206,7 @@ export const MasitasSection = () => {
     <section className="m-0 self-center mt-8" id="masitas">
       <div className="mx-auto p-1 sm:p-2 md:p-4 lg:p-8 rounded-lg">
         <div className="mb-8">
-          <div className="mx-2 grid grid-cols-2 gap-2 items-center lg:grid-cols-2 max-w-[1200px] md:mx-auto">
+          <div className="mx-2 grid grid-cols-2 md:grid-cols-4 gap-2 items-center  max-w-[1200px] md:mx-auto">
             {masitas.map((masita, index) => (
               <MasitaCard key={index} masita={masita} isDetailed />
             ))}
