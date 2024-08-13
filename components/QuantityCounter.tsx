@@ -1,4 +1,3 @@
-// QuantityCounter.tsx
 import React, { useState, useEffect, useRef } from 'react';
 import { Plus, Minus } from 'lucide-react';
 
@@ -10,7 +9,8 @@ interface QuantityCounterProps {
   p_u3: number;
   p_u4: number;
   p_u5: number;
-  onQuantityChange: (quantity: number, totalPrice: number) => void; // Modificación para enviar cantidad y precio total
+  onQuantityChange: (quantity: number, totalPrice: number) => void;
+  showTotalPrice?: boolean;
 }
 
 const QuantityCounter: React.FC<QuantityCounterProps> = ({
@@ -22,11 +22,13 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
   p_u4,
   p_u5,
   onQuantityChange,
+  showTotalPrice = true,
 }) => {
   const [quantity, setQuantity] = useState(initialQuantity);
   const [totalPrice, setTotalPrice] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const delayRef = useRef<NodeJS.Timeout | null>(null);
+  const isFirstPressRef = useRef(true);
 
   useEffect(() => {
     calculateTotalPrice(quantity);
@@ -63,21 +65,27 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
     const total = quantity * pricePerUnit;
     const roundedTotal = Math.ceil(total);
     setTotalPrice(roundedTotal);
-    onQuantityChange(quantity, roundedTotal); // Notifica al padre
+    onQuantityChange(quantity, roundedTotal);
   };
 
   const startIncrement = () => {
-    handleIncrement(); // Primera suma
+    if (isFirstPressRef.current) {
+      handleIncrement(); // Incrementa una vez inmediatamente
+      isFirstPressRef.current = false;
+    }
     delayRef.current = setTimeout(() => {
-      intervalRef.current = setInterval(handleIncrement, 150);
-    }, 600); // Inicia el intervalo después de 0.8 segundos
+      intervalRef.current = setInterval(handleIncrement, 200);
+    }, 500); // Comienza a incrementar continuamente después de 0.5 segundos
   };
 
   const startDecrement = () => {
-    handleDecrement(); // Primera resta
+    if (isFirstPressRef.current) {
+      handleDecrement(); // Decrementa una vez inmediatamente
+      isFirstPressRef.current = false;
+    }
     delayRef.current = setTimeout(() => {
-      intervalRef.current = setInterval(handleDecrement, 150);
-    }, 600); // Inicia el intervalo después de 0.8 segundos
+      intervalRef.current = setInterval(handleDecrement, 200);
+    }, 500); // Comienza a decrementar continuamente después de 0.5 segundos
   };
 
   const stopInterval = () => {
@@ -87,14 +95,17 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
     if (delayRef.current) {
       clearTimeout(delayRef.current);
     }
+    isFirstPressRef.current = true; // Resetear para la próxima interacción
   };
 
   return (
     <div className="flex flex-col items-center space-y-2">
-      <div className="text-lg font-bold">
-        Precio Total: Bs {totalPrice.toFixed(2)}
-      </div>
-      <div className="flex items-center space-x-4">
+      {showTotalPrice && (
+        <div className="text-lg font-bold">
+          Precio Total: Bs {totalPrice.toFixed(2)}
+        </div>
+      )}
+      <div className="flex items-center">
         <button
           className="btn btn-decrement border rounded bg-white p-2"
           onMouseDown={startDecrement}
@@ -104,14 +115,14 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
           onTouchEnd={stopInterval}
           disabled={quantity <= minQuantity}
         >
-          <Minus size={20} />
+          <Minus size={20} className='text-black'/>
         </button>
         <input
           type="number"
           value={quantity}
           onChange={handleQuantityChange}
           onBlur={handleBlur}
-          className="w-16 text-center border border-gray-300 rounded p-2 bg-white focus:outline-none focus:border-gray-500"
+          className="w-16 text-center text-black border border-gray-300 rounded p-2 bg-white focus:outline-none focus:border-gray-500"
           style={{
             MozAppearance: 'textfield',
             WebkitAppearance: 'none',
@@ -126,7 +137,7 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
           onTouchStart={startIncrement}
           onTouchEnd={stopInterval}
         >
-          <Plus size={20} />
+          <Plus size={20} className='text-black'/>
         </button>
       </div>
     </div>

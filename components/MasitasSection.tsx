@@ -206,9 +206,14 @@ export const MasitasSection = () => {
     <section className="m-0 self-center mt-8" id="masitas">
       <div className="mx-auto p-1 sm:p-2 md:p-4 lg:p-8 rounded-lg">
         <div className="mb-8">
-          <div className="mx-2 grid grid-cols-2 md:grid-cols-4 gap-2 items-center  max-w-[1200px] md:mx-auto">
+          <div className="mx-2 grid grid-cols-2 md:grid-cols-4 gap-4 items-center max-w-[1200px] md:mx-auto">
             {masitas.map((masita, index) => (
-              <MasitaCard key={index} masita={masita} isDetailed />
+              <MasitaCard
+                key={index}
+                masita={masita}
+                isDetailed
+                
+              />
             ))}
           </div>
         </div>

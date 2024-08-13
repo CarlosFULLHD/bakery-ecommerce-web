@@ -51,6 +51,8 @@ const config = {
         
         "custom-brown":"#341713",
         "custom-brown-light":"#B76540",
+        "custom-primary":"#f2F2F2",
+        
         // "custom-white":"#f2f2f2",
         // "custom-blue": "#006692",
         // "custom-yellow": "#ffe17e",
