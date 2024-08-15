@@ -31,8 +31,9 @@ export default function Home() {
 
         <HeroSection />
         <MasitasSection />  
-        <FooterSection />
         <CartView />
+        <FooterSection />
+        
       </CartProvider> 
     </section>
   );

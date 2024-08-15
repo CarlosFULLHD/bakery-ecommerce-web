@@ -8,7 +8,8 @@ const FooterComponent: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           <div>
-            <h3 className="text-lg font-semibold mb-4">Menú</h3>
+          <hr className="my-8  border-white bg-white " />
+         
             <ul className="space-y-2">
               <li>
                 <Link href="/como-realizar-un-pedido" className="hover:underline">
@@ -40,9 +41,9 @@ const FooterComponent: React.FC = () => {
 
           <div className="flex flex-col items-center">
             <img
-              src="/path-to-your-logo.png"
+              src="https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/PasteleriaAgape.jpeg?raw=true"
               alt="Logo Pastelería Ágape"
-              className="w-24 h-24 mb-4"
+              className="w-24 h-36 mb-4 rounded-lg"
             />
             <p className="text-center">
               Disfruta de nuestras delicias artesanales y naturales, hechas con amor y dedicación.
@@ -71,11 +72,11 @@ const FooterComponent: React.FC = () => {
           </div> */}
         </div>
 
-        <hr className="my-8" />
+        <hr className="my-8  border-white bg-white " />
 
         <div className="text-center">
           <span className="block text-sm text-gray-300">
-            © 2024 Pastelería Ágape. - Desarrollado por <a href="https://www.linkedin.com/in/carlos-nina-reynaga/" className="hover:underline">Carlos Nina</a>.
+            © 2024 Pastelería Ágape - Desarrollado por <a href="https://www.linkedin.com/in/carlos-nina-reynaga/" className="hover:underline">Carlos Nina</a>.
           </span>
         </div>
       </div>
