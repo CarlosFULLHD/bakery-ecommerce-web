@@ -11,16 +11,16 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="relative bg-background-dark py-12 px-4 flex flex-col items-center text-center">
+    <section className="relative bg-background-dark py-12 px-4 flex flex-col items-center text-center lg:py-28">
       {/* Imagen de Fondo */}
       <img
-        src="/jesus_love.jpg"
+        src="/Jesus_bakery.webp"
         alt="Imagen decorativa"
-        className="absolute inset-0 w-full h-full object-cover opacity-10 z-0"
+        className="absolute inset-0 w-full h-full object-cover opacity-20 z-0"
       />
 
       {/* Contenido */}
-      <div className="relative z-10">
+      <div className="relative z-10 lg:pt-20">
         {/* Título */}
         <h1 className="text-4xl md:text-5xl font-bold text-custom-brown">
           Comparte la Fe con Dulzura 🧁🍪
@@ -32,20 +32,22 @@ export const HeroSection = () => {
         </p>
 
         {/* Botón de Acción */}
-        <Button className="mt-8 bg-primary text-custom-brown py-3 px-8 rounded-full text-lg font-bold shadow-lg hover:bg-primary-dark transition duration-300">
+        <Button 
+        className="mt-8 bg-primary text-custom-brown py-3 px-8 rounded-lg text-lg font-bold shadow-lg hover:bg-custom-brown-light hover:text-white transition duration-300"
+         onClick={() => scrollToSection("masitas")}>
           Haz tu Pedido Ahora
         </Button>
       </div>
 
       {/* Botón Fade Down */}
-      <div className="relative z-10 w-10 mx-auto mt-8 lg:mt-12 xl:mt-20">
-        <button
-          className="h-12 text-white hover:text-primary"
-          onClick={() => scrollToSection("nextSection")} // Reemplaza "nextSection" con el ID de la sección a la que deseas desplazarte
+      {/* <div className="lg:pr-28 relative z-10 w-10 mx-auto mt-8 lg:mt-12 xl:mt-20">
+        <Button
+          className="h-12 text-white hover:text-primary rounded-full"
+          onClick={() => scrollToSection("masitas")} // Reemplaza "nextSection" con el ID de la sección a la que deseas desplazarte
         >
           <FaChevronDown className="animate-fade-in-down text-xl" />
-        </button>
-      </div>
+        </Button>
+      </div> */}
     </section>
   );
 };

@@ -88,7 +88,7 @@ const MasitaCard: React.FC<MasitaCardProps> = ({ masita, isDetailed = false }) =
   return (
     <div>
       <Card
-        className="cursor-pointer w-full bg-background-dark rounded-lg"
+        className="cursor-pointer w-full bg-background-dark rounded-lg min-h-[210px]" // Añadir min-h para la altura mínima de la tarjeta
         isPressable
         onClick={onOpen}
       >
@@ -96,20 +96,26 @@ const MasitaCard: React.FC<MasitaCardProps> = ({ masita, isDetailed = false }) =
           <Image
             width="100%"
             alt={masita.nombre}
-            className="w-full h-[150px] object-cover rounded-sm"
+            className="w-full h-[150px] min-h-[150px] object-cover rounded-sm" // Añadir min-h para la imagen
             src={masita.imagen_lowres}
           />
         </CardBody>
-        <CardFooter className="text-small justify-between flex flex-col p-0 z-10">
-          <h1 className="font-bold text-lg text-custom-brown tracking-tighter">{masita.nombre}</h1>
+        <CardFooter className="text-small flex items-center justify-center flex-col p-0 z-10 min-h-[60px]">
+          <h1 className="font-bold text-lg text-custom-brown tracking-tighter px-4 leading-tight text-center">
+            {masita.nombre}
+          </h1>
         </CardFooter>
+
+
+
       </Card>
+
 
       {isDetailed && (
         <Modal
           isOpen={isOpen}
           onOpenChange={onClose}
-          className="mx-auto max-w-[1024px] p-1 sm:p-2 md:p-4 lg:p-8 rounded-lg bg-background-dark text-custom-brown"
+          className="mx-auto max-w-[1024px] min-h-full lg:min-h-[560px] p-1 sm:p-2 md:p-4 lg:p-8 rounded-lg bg-background-dark text-custom-brown"
           scrollBehavior="inside"
           placement="center"
         >
