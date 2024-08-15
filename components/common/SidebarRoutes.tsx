@@ -1,32 +1,25 @@
 "use client";
 
 import {
-  BarChart,
-  Compass,
-  Layout,
-  List,
-  Mail,
-  Heart,
-  User,
-  Code,
-  PanelsTopLeft,
-  GraduationCap,
+  ShoppingBag,
+  Info,
+  HelpCircle,
+  Star,
+  Phone,
+  Instagram,
+  Linkedin,
+  Facebook,
+  Youtube,
+  Twitter,
 } from "lucide-react";
-import { usePathname } from "next/navigation";
 import { SidebarItem } from "./SidebarItem";
 
 export const routes = [
-  { icon: GraduationCap, label: "Skills", href: "#skills" },
-  {
-    icon: Code,
-    label: "Experience",
-    href: "#experience",
-  },
-  {
-    icon: PanelsTopLeft,
-    label: "Key Projects",
-    href: "#projects",
-  },
+  { icon: ShoppingBag, label: "Cómo Realizar un Pedido", href: "#pedido" },
+  { icon: Info, label: "Sobre Nosotros", href: "#sobre-nosotros" },
+  { icon: HelpCircle, label: "Preguntas Frecuentes", href: "#preguntas-frecuentes" },
+  { icon: Star, label: "Reseñas", href: "#resenas" },
+  { icon: Phone, label: "Contacto", href: "#contacto" },
 ];
 
 export const SidebarRoutes = () => {

@@ -41,9 +41,7 @@ export const Navbar = () => {
             </NavbarItem>
           ))}
         </ul>
-        <div className="md:flex hidden">
-          <ModalComponentContanctame />
-        </div>
+
       </NavbarContent>
     </NextUINavbar>
   );
