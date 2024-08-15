@@ -17,20 +17,20 @@ export interface Masita {
 
 const masitas: Masita[] = [
   {
-    nombre: "Masita de Frutilla",
-    precio: 45.00,
+    nombre: "Galletones con Chocochips",
+    precio: 48.00,
     imagen_lowres: "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+    descripcion: "Deliciosos galletones de avena, perfectos para cualquier ocasión. Hechos con ingredientes naturales y un toque de amor, estos galletones son ideales para acompañar tu café de la mañana o para compartir en tus reuniones.",
     imagenes: [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN05iwPgjpQyWegZ5Va-joJIW3t58xm97B1x8t_rMjETwTpzI7Odou8-BaDeaMVd_EuzE&usqp=CAU",
     "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
     "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png"
     ],
-    p_u1: 3.00,
-    p_u2: 2.75,
-    p_u3: 2.50,
-    p_u4: 2.25,
-    p_u5: 2.00
+    p_u1: 4.00,
+    p_u2: 3.30,
+    p_u3: 2.90,
+    p_u4: 2.90,
+    p_u5: 2.90
   },
   {
     nombre: "Masita de Frutilla",

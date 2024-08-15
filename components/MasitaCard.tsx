@@ -3,18 +3,24 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Image,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
   Button,
+  useDisclosure,
 } from "@nextui-org/react";
-import QuantityCounter from "./QuantityCounter";
 import {
   Carousel,
-  CarouselIndicator,
   CarouselMainContainer,
-  CarouselNext,
-  CarouselPrevious,
   CarouselThumbsContainer,
   SliderMainItem,
+  SliderThumbItem,
 } from "@/components/ui/carousel";
+import QuantityCounter from "./QuantityCounter";
+import { useCart } from '@/components/cart/CartContext';  // Importar el contexto del carrito
 
 export interface Masita {
   nombre: string;
@@ -35,9 +41,10 @@ interface MasitaCardProps {
 }
 
 const MasitaCard: React.FC<MasitaCardProps> = ({ masita, isDetailed = false }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [quantity, setQuantity] = useState(12);
   const [totalPrice, setTotalPrice] = useState(masita.p_u1 * 12);
-  const [showCounter, setShowCounter] = useState(false);
+  const { addToCart } = useCart();  // Usar el hook para añadir al carrito
 
   const handleQuantityChange = (newQuantity: number) => {
     setQuantity(newQuantity);
@@ -59,71 +66,120 @@ const MasitaCard: React.FC<MasitaCardProps> = ({ masita, isDetailed = false }) =
   };
 
   const handleAddToCart = () => {
-    setShowCounter(true);
+    addToCart({
+      id: masita.nombre,
+      nombre: masita.nombre,
+      imagen: masita.imagen_lowres,
+      cantidad: quantity,
+      precio: totalPrice / quantity,
+    });
+    onClose();
   };
 
   return (
-    <Card
-      className=" w-full bg-background-dark rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-    >
-      <CardBody className="p-0 overflow-hidden">
-        <Carousel>
-          <CarouselNext />
-          <CarouselPrevious />
-          <div className="relative">
-            <CarouselMainContainer className="h-28">
-              {masita.imagenes?.map((img, index) => (
-                <SliderMainItem key={index} className="bg-transparent">
-                  <div className="outline outline-1 outline-border size-full flex items-center justify-center rounded-xl bg-background">
-                    <img src={img} alt={`Slide ${index + 1}`} className="w-full h-full object-cover rounded-xl" />
-                  </div>
-                </SliderMainItem>
-              ))}
-            </CarouselMainContainer>
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
-              <CarouselThumbsContainer className="gap-x-1">
-                {masita.imagenes?.map((_, index) => (
-                  <CarouselIndicator key={index} index={index} />
-                ))}
-              </CarouselThumbsContainer>
-            </div>
-          </div>
-        </Carousel>
-      </CardBody>
-      <CardFooter className="text-small flex flex-col p-4 z-10 rounded-b-lg">
-        <h1 className="font-bold text-lg text-custom-brown tracking-tighter">
-          {masita.nombre} x {quantity} unidades
-        </h1>
-        <h2 className="font-bold text-xl text-custom-brown-light">
-          Bs. {totalPrice.toFixed(2)}
-        </h2>
+    <div>
+      <Card
+        className="cursor-pointer w-full bg-background-dark rounded-lg"
+        isPressable
+        onClick={onOpen}
+      >
+        <CardBody className="p-0 overflow-hidden">
+          <Image
+            width="100%"
+            alt={masita.nombre}
+            className="w-full h-[150px] object-cover rounded-sm"
+            src={masita.imagen_lowres}
+          />
+        </CardBody>
+        <CardFooter className="text-small justify-between flex flex-col p-0 z-10">
+          <h1 className="font-bold text-lg text-custom-brown tracking-tighter">{masita.nombre}</h1>
+        </CardFooter>
+      </Card>
 
-        {showCounter ? (
-          <div className="mt-2">
-            <QuantityCounter 
-              minQuantity={12} 
-              initialQuantity={quantity}
-              p_u1={masita.p_u1} 
-              p_u2={masita.p_u2} 
-              p_u3={masita.p_u3} 
-              p_u4={masita.p_u4} 
-              p_u5={masita.p_u5}
-              onQuantityChange={handleQuantityChange}
-              showTotalPrice={false} // Oculta el precio total en las cards
-            />
-          </div>
-        ) : (
-          <Button
-            className="mt-4 w-full bg-primary font-bold shadow-md text-custom-brown bg-custom-primary py-2 px-4 rounded-lg"
-            color="primary"
-            variant="flat"
-            onClick={handleAddToCart}
-          >
-            Agregar al carrito
-          </Button>
-        )}
-      </CardFooter>
-    </Card>
+      {isDetailed && (
+        <Modal
+          isOpen={isOpen}
+          onOpenChange={onClose}
+          className="mx-auto max-w-[1024px] p-1 sm:p-2 md:p-4 lg:p-8 rounded-lg bg-background-dark text-custom-brown"
+          scrollBehavior="inside"
+          placement="center"
+        >
+          <ModalContent>
+            <>
+              <ModalHeader className="text-3xl text-custom-brown">
+                {masita.nombre}
+              </ModalHeader>
+              <ModalBody>
+                <div className="md:grid md:grid-cols-3 md:gap-4">
+                  <div className="md:col-span-2">
+                    <Carousel orientation="vertical" className="flex items-center gap-2">
+                      <div className="relative basis-3/4 flex justify-center bg-background-dark">
+                        <CarouselMainContainer className="h-40 md:h-64 md:w-80">
+                          {masita.imagenes?.map((img, index) => (
+                            <SliderMainItem
+                              key={index}
+                              className="border border-muted flex items-center justify-center rounded-md bg-background-dark"
+                            >
+                              <Image
+                                src={img}
+                                alt={`Slide ${index + 1}`}
+                                className="w-full h-full max-h-[150px] sm:max-h-[300px] object-cover rounded-md"
+                              />
+                            </SliderMainItem>
+                          ))}
+                        </CarouselMainContainer>
+                      </div>
+                      <CarouselThumbsContainer className="h-40 sm:h-60 basis-1/4 bg-background-dark">
+                        {masita.imagenes?.map((img, index) => (
+                          <SliderThumbItem
+                            key={index}
+                            index={index}
+                            className="rounded-md bg-transparent"
+                          >
+                            <span className="border border-muted flex items-center justify-center h-full w-full rounded-md cursor-pointer bg-background">
+                              <Image
+                                src={img}
+                                alt={`Slide ${index + 1}`}
+                                className="w-full h-full max-h-[150px] sm:max-h-[300px] object-cover rounded-md"
+                              />
+                            </span>
+                          </SliderThumbItem>
+                        ))}
+                      </CarouselThumbsContainer>
+                    </Carousel>
+                  </div>
+                  <div className="md:col-span-1">
+                    <p className="text-xl mt-4 md:mt-0">{masita.descripcion}</p>
+                    <div className="mt-4">
+                      <QuantityCounter 
+                        minQuantity={12} 
+                        initialQuantity={quantity}
+                        p_u1={masita.p_u1} 
+                        p_u2={masita.p_u2} 
+                        p_u3={masita.p_u3} 
+                        p_u4={masita.p_u4} 
+                        p_u5={masita.p_u5}
+                        onQuantityChange={handleQuantityChange}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  className="font-bold w-full"
+                  color="primary"
+                  variant="bordered"
+                  onClick={handleAddToCart}
+                >
+                  Añadir al carrito
+                </Button>
+              </ModalFooter>
+            </>
+          </ModalContent>
+        </Modal>
+      )}
+    </div>
   );
 };
 

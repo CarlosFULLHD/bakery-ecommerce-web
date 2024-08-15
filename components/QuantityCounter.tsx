@@ -117,17 +117,19 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
         >
           <Minus size={20} className='text-black'/>
         </button>
-        <input
+          <input
           type="number"
           value={quantity}
           onChange={handleQuantityChange}
           onBlur={handleBlur}
           className="w-16 text-center text-black border border-gray-300 rounded p-2 bg-white focus:outline-none focus:border-gray-500"
           style={{
-            MozAppearance: 'textfield',
-            WebkitAppearance: 'none',
+            // Ocultar los botones de incremento/decremento
+            MozAppearance: 'textfield', // Firefox
+            WebkitAppearance: 'none', // Safari y Chrome
+            appearance: 'none', // Otros navegadores
           }}
-          onFocus={(event) => event.target.select()}
+          onFocus={(event) => event.target.select()} // Selecciona todo el texto al hacer clic
         />
         <button
           className="btn btn-increment border rounded bg-white p-2"

@@ -21,12 +21,17 @@ import Education from "@/components/Education";
 import Hobbies from "@/components/Hobbies";
 import Resume from "@/components/Resume";
 import MasitasSection from "@/components/MasitasSection";
+import { CartProvider } from "@/components/cart/CartContext";
 export default function Home() {
   return (
     <section className="flex flex-col ">
+      <CartProvider>     
+
+
       <HeroSection />
-      <MasitasSection />
+      <MasitasSection />  
       <FooterSection />
+      </CartProvider> 
     </section>
   );
 }
