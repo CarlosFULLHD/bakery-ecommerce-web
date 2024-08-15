@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/carousel";
 import QuantityCounter from "./QuantityCounter";
 import { useCart } from '@/components/cart/CartContext';  // Importar el contexto del carrito
+import { log } from "console";
 
 export interface Masita {
   nombre: string;
@@ -66,15 +67,23 @@ const MasitaCard: React.FC<MasitaCardProps> = ({ masita, isDetailed = false }) =
   };
 
   const handleAddToCart = () => {
-    addToCart({
-      id: masita.nombre,
-      nombre: masita.nombre,
-      imagen: masita.imagen_lowres,
-      cantidad: quantity,
-      precio: totalPrice / quantity,
-    });
-    onClose();
+    console.log("Adding to cart...");
+    try {
+      addToCart({
+        id: masita.nombre, 
+        nombre: masita.nombre,
+        imagen: masita.imagen_lowres,
+        cantidad: quantity,
+        precio: totalPrice / quantity,
+      });
+      console.log("Item added to cart");
+      onClose(); // Cerrar modal después de añadir al carrito
+    } catch (error) {
+      console.error("Failed to add to cart:", error);
+    }
   };
+  
+  
 
   return (
     <div>

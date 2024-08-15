@@ -29,31 +29,31 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://carlitosnina.com",
-    title: "Carlos Nina's Portfolio",
+    url: "https://pasteleria-agape.vercel.app/",
+    title: "Pastelería Agape",
     description:
-      "Explore the diverse and impactful projects of Carlos Nina, a Junior Full Stack Developer proficient in Next.js, Spring Boot, and microservices. My portfolio includes transformative projects like the thesis management system and Job Fair Platform. ",
+      "Descubre nuestras masitas artesanales, ideales para reuniones de célula, eventos de iglesia y celebraciones familiares. Perfectas para compartir y disfrutar juntos ",
     images: [
       {
         url: "https://carlitosnina.com/opengraph-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Carlos Nina's Portfolio",
+        alt: "Pastelería Agape",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@CarlosFullHD4K",
-    title: "Carlos Nina's Portfolio",
+    title: "Pastelería Agape",
     description:
-      "Explore the diverse and impactful projects of Carlos Nina, a Junior Full Stack Developer proficient in Next.js, Spring Boot, and microservices. My portfolio includes transformative projects like the thesis management system and Job Fair Platform. ",
+      "Descubre nuestras masitas artesanales, ideales para reuniones de célula, eventos de iglesia y celebraciones familiares. Perfectas para compartir y disfrutar juntos",
     images: [
       {
         url: "https://carlitosnina.com/opengraph-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Carlos Nina's Portfolio",
+        alt: "Pastelería Agape",
       },
     ],
   },
