@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-name: "Carlos Nina's Portfolio",
-description: "Discover the work of Carlos Nina, a Junior Full Stack Developer specializing in Next.js, Spring Boot, and microservices. Based in Bolivia, Carlos is proactive, competitive, and constantly learning new technologies."
+name: "Pasteleria Agape",
+description: "Descubre nuestras masitas artesanales, ideales para reuniones de célula, eventos de iglesia y celebraciones familiares. Perfectas para compartir y disfrutar juntos " 
 };
 

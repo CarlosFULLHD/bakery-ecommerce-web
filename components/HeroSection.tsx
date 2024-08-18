@@ -33,7 +33,7 @@ export const HeroSection = () => {
 
         {/* Botón de Acción */}
         <Button 
-        className="mt-8 bg-primary text-custom-brown py-3 px-8 rounded-lg text-lg font-bold shadow-lg hover:bg-custom-brown-light hover:text-white transition duration-300"
+        className="mt-8 bg-primary  py-3 px-8 rounded-lg text-lg font-bold shadow-md shadow-off-white bg-custom-brown-light text-white hover:bg-custom-brown transition duration-300"
          onClick={() => scrollToSection("masitas")}>
           Haz tu Pedido Ahora
         </Button>
