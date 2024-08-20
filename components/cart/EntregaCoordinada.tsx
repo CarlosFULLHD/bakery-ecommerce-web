@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Select, SelectItem, Button, Card } from "@nextui-org/react";
+import { Select, SelectItem, Button, Card, Link } from "@nextui-org/react";
 import { DatePicker } from "@nextui-org/date-picker";
-import { now, getLocalTimeZone, parseZonedDateTime, ZonedDateTime } from "@internationalized/date";
+import {
+  now,
+  getLocalTimeZone,
+  parseZonedDateTime,
+  ZonedDateTime,
+} from "@internationalized/date";
+import ProgressBar from "../common/ProgressBar";
 
 const entregaOpciones = [
   { label: "Terminal de Buses", precio: 0 },
@@ -20,7 +26,11 @@ const EntregaCoordinada = () => {
     const savedData = localStorage.getItem("entregaData");
     if (savedData) {
       const parsedData = JSON.parse(savedData);
-      if (parsedData.lugar && parsedData.precio !== undefined && parsedData.fecha) {
+      if (
+        parsedData.lugar &&
+        parsedData.precio !== undefined &&
+        parsedData.fecha
+      ) {
         setSelectedLugar(parsedData.lugar);
         setPrecioEntrega(parsedData.precio);
         setSelectedDate(parseZonedDateTime(parsedData.fecha));
@@ -71,7 +81,9 @@ const EntregaCoordinada = () => {
       <Card className="mt-8 p-4 bg-background-dark text-custom-brown">
         <div className="bg-background-dark text-custom-brown font-bold">
           <h3 className="text-2xl lg:text-3xl">Entrega Coordinada</h3>
-          <p className="mt-4">Escoge un punto para coordinar la entrega de tu pedido.</p>
+          <p className="mt-4">
+            Escoge un punto para coordinar la entrega de tu pedido.
+          </p>
           <Select
             aria-label="Selecciona un lugar de entrega"
             placeholder={`Selecciona lugar de entrega - Bs.${precioEntrega}`}
@@ -91,13 +103,15 @@ const EntregaCoordinada = () => {
             ))}
           </Select>
 
-          <p className="text-custom-brown">Elige una fecha y hora para el encuentro.</p>
+          <p className="text-custom-brown">
+            Elige una fecha y hora para el encuentro.
+          </p>
           <DatePicker
             label="Fecha del encuentro"
             variant="faded"
             hideTimeZone
             showMonthAndYearPickers
-            value={selectedDate ?? now(getLocalTimeZone())}  // Usa la fecha guardada o la fecha actual si no hay
+            value={selectedDate ?? now(getLocalTimeZone())} // Usa la fecha guardada o la fecha actual si no hay
             onChange={handleDateChange}
             className="rounded-xl border-custom-brown dark:text-white"
           />
@@ -106,11 +120,15 @@ const EntregaCoordinada = () => {
             Nota: La hora de encuentro podría variar según disponibilidad.
           </p>
         </div>
+
         <Button
+          color="primary"
+          size="lg"
+          as={Link}
+          href="/pago"
           className="mt-4 bg-custom-brown-light font-bold text-white"
-          onClick={() => (window.location.href = "/#masitas")}
         >
-          Seguir comprando
+          Confirmar y Realizar Pago
         </Button>
       </Card>
     </div>

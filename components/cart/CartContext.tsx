@@ -33,7 +33,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
   // Save cart to sessionStorage whenever it changes
   useEffect(() => {
-    sessionStorage.setItem("cart", JSON.stringify(cart));
+    if (cart.length > 0) {
+      sessionStorage.setItem("cart", JSON.stringify(cart));
+    }
   }, [cart]);
 
   const addToCart = (item: CartItem) => {

@@ -1,31 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { useCart } from "./CartContext";
 import CartItem from "@/components/cart/CartItem";
-import { Button } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import ProgressBar from "../common/ProgressBar";
-import { ArrowLeftToLine } from "lucide-react";
+import CartPDF from "./CartPDF"; // Importamos el nuevo componente
+
 const CartView: React.FC = () => {
   const { cart, cartTotalPrice } = useCart();
-  const [currentStep, setCurrentStep] = useState(0);
+
   console.log("Rendering CartView with cart:", cart);
 
   return (
-    <div className="max-w-4xl   flex flex-col">
-      {/* Barra de progreso */}
-      <div className="mt-4 flex justify-start">
-        <Button
-          color="secondary"
-          variant="bordered"
-          onClick={() => (window.location.href = "/#masitas")}
-        >
-          <ArrowLeftToLine />
-        </Button>
-      </div>
-
-      <ProgressBar currentStep={currentStep} />
-
-      {/* Contenido de la fase actual */}
-
+    <div className="max-w-4xl flex flex-col">
       <div className="max-w-4xl mx-auto flex flex-col px-4 py-2">
         <h1 className="text-3xl font-bold mb-8 text-custom-brown">
           Carrito de Compras
@@ -46,12 +32,17 @@ const CartView: React.FC = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col mt-8 space-y-4">
-          <Button color="primary" size="lg">
+        <div className="flex flex-col mt-8 ">
+          <CartPDF />{" "}
+          {/* Aquí usamos el nuevo componente para descargar el PDF */}
+          <Button
+            color="primary"
+            size="lg"
+            as={Link}
+            href="/entrega"
+            className=" bg-custom-brown-light font-bold text-white"
+          >
             Seleccionar Método de Entrega
-          </Button>
-          <Button color="secondary" size="lg">
-            Descargar Carrito en PDF
           </Button>
         </div>
       </div>

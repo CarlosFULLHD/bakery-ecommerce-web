@@ -1,6 +1,6 @@
-import React from 'react';
-import { Button, Image } from '@nextui-org/react';
-import { useCart } from './CartContext';
+import React from "react";
+import { Button, Image } from "@nextui-org/react";
+import { useCart } from "./CartContext";
 
 interface CartItemProps {
   id: string;
@@ -10,7 +10,13 @@ interface CartItemProps {
   precio: number;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ id, nombre, imagen, cantidad, precio }) => {
+const CartItem: React.FC<CartItemProps> = ({
+  id,
+  nombre,
+  imagen,
+  cantidad,
+  precio,
+}) => {
   const { removeFromCart } = useCart();
 
   return (
@@ -21,7 +27,9 @@ const CartItem: React.FC<CartItemProps> = ({ id, nombre, imagen, cantidad, preci
         <p className="text-lg">Cantidad: {cantidad}</p>
       </div>
       <div className="text-right">
-        <p className="text-lg font-bold">Bs. {(cantidad * precio).toFixed(2)}</p>
+        <p className="text-lg font-bold">
+          Bs. {(cantidad * precio).toFixed(2)}
+        </p>
         <Button color="danger" onClick={() => removeFromCart(id)}>
           Eliminar
         </Button>

@@ -26,15 +26,11 @@ import CartView from "@/components/cart/CartView";
 export default function Home() {
   return (
     <section className="flex flex-col ">
-      <CartProvider>     
-
-
+      <CartProvider>
         <HeroSection />
-        <MasitasSection />  
-        <CartView />
+        <MasitasSection />
         <FooterSection />
-        
-      </CartProvider> 
+      </CartProvider>
     </section>
   );
 }
