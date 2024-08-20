@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CartView from "@/components/cart/CartView";
 import BuyBar from "@/components/cart/BuyBar";
 
@@ -10,7 +10,7 @@ export default function CartPage() {
     <>
       <BuyBar
         currentStep={currentStep}
-        onBackClick={() => (window.location.href = "/#masitas")}
+        backUrl="/#masitas" // Usa Link de Next.js para la navegación
       />
       <CartView />
     </>

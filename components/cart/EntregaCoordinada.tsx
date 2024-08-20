@@ -3,6 +3,7 @@ import { Select, SelectItem, Button, Card, Link } from "@nextui-org/react";
 import { DatePicker } from "@nextui-org/date-picker";
 import { useOrder } from "./OrderContext";
 import { now, getLocalTimeZone, ZonedDateTime } from "@internationalized/date";
+
 const entregaOpciones = [
   { label: "Terminal de Buses", precio: 0 },
   { label: "Plaza del Estudiante", precio: 5 },
@@ -78,7 +79,7 @@ const EntregaCoordinada: React.FC = () => {
           </p>
         </div>
 
-        <Link href="/entrega">
+        <Link href="/pago">
           <Button
             color="primary"
             size="lg"

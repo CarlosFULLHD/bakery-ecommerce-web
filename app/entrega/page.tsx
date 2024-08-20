@@ -8,13 +8,7 @@ export default function DeliveryPage() {
 
   return (
     <>
-      <BuyBar
-        currentStep={currentStep}
-        onBackClick={() => {
-          // Link to the previous page
-          window.history.back();
-        }}
-      />
+      <BuyBar currentStep={currentStep} backUrl="/carrito" />
       <EntregaCoordinada />
     </>
   );
