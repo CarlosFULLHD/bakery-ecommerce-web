@@ -11,7 +11,7 @@ interface BuyBarProps {
 
 const BuyBar: React.FC<BuyBarProps> = ({ currentStep, backUrl }) => {
   return (
-    <div className="flex justify-between items-center w-full p-4 bg-white shadow-md">
+    <div className=" justify-between items-center w-full p-4 ">
       <Link href={backUrl} passHref>
         <Button
           color="secondary"

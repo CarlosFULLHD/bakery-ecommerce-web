@@ -39,9 +39,8 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
   const [precioEntrega, setPrecioEntrega] = useState<number>(0);
   const [selectedDate, setSelectedDate] = useState<ZonedDateTime | null>(null);
 
-  // Cargar datos desde sessionStorage al montar el componente
+  // Load data from sessionStorage when the component mounts
   useEffect(() => {
-    console.log("Loading data from sessionStorage...");
     const storedOrderData = sessionStorage.getItem("orderData");
 
     if (storedOrderData) {
@@ -61,7 +60,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, []);
 
-  // Guardar todos los datos (carrito y entrega) en sessionStorage cuando cambian
+  // Save all data (cart and entrega) to sessionStorage whenever it changes
   useEffect(() => {
     const orderData = {
       cart,
@@ -114,7 +113,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const cartTotalPrice = cart.reduce(
-    (total, item) => total + item.precio * item.cantidad, // Calcula correctamente el precio total
+    (total, item) => total + item.precio * item.cantidad,
     0
   );
 

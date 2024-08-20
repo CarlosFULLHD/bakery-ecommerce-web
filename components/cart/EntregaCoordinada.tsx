@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Select, SelectItem, Button, Card, Link } from "@nextui-org/react";
 import { DatePicker } from "@nextui-org/date-picker";
 import { useOrder } from "./OrderContext";
@@ -21,6 +21,13 @@ const EntregaCoordinada: React.FC = () => {
     selectedDate,
     setSelectedDate,
   } = useOrder();
+
+  // Ensure date is only set in the client side
+  useEffect(() => {
+    if (!selectedDate) {
+      setSelectedDate(now(getLocalTimeZone()));
+    }
+  }, []);
 
   const handleSelectionChange = (keys: string | Set<React.Key>) => {
     const selectedLabel =
