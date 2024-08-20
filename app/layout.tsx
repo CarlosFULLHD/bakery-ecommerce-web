@@ -65,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="light" suppressHydrationWarning> {/* Aplica la clase 'light' directamente aquí */}
       <body
         className={clsx(
           "min-h-screen font-sans antialiased bg-custom-background ",
@@ -74,8 +74,8 @@ export default function RootLayout({
         style={{ zIndex: 0 }}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          <div className="relative flex flex-col  h-full dark:bg-black-50">
-            <div className="h-12 md:h-10 lg:h-12 xl:h-14 fixed inset-y-0 w-full z-40 bg-custom-background dark:bg-blue-25">
+          <div className="relative flex flex-col h-full">
+            <div className="h-12 md:h-10 lg:h-12 xl:h-14 fixed inset-y-0 w-full z-40 bg-custom-background">
               <div className="pl-6 md:p-4 border-b h-full flex items-center shadow-sm z-50 bg-custom-background text-white">
                 <MobileSidebar />
                 <Navbar />

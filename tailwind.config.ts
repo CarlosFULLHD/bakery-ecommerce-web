@@ -115,7 +115,11 @@ const config = {
     },
   },  
   darkMode: "class",
-  plugins: [require("tailwindcss-animate"),nextui()],
+  plugins: [
+    nextui({
+      defaultTheme: "light", // Configura "light" como el tema predeterminado
+    }),
+    require("tailwindcss-animate"),nextui()],
 } satisfies Config
 
 export default config
