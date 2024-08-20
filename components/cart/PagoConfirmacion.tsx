@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card } from "@nextui-org/react";
-import { generateOrderPDF } from "@/utils/pdfUtils"; // Asegúrate de que la ruta sea correcta
+import { useOrder } from "./OrderContext";
+import { generateOrderPDF } from "@/utils/pdfUtils";
 
 interface PagoConfirmacionProps {
   qrUrl: string;
@@ -11,18 +12,8 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({
   qrUrl,
   totalPedido,
 }) => {
-  const [selectedLugar, setSelectedLugar] = useState<string | null>(null);
-  const [precioEntrega, setPrecioEntrega] = useState<number>(0);
+  const { selectedLugar, precioEntrega, cart } = useOrder();
   const [comprobante, setComprobante] = useState<File | null>(null);
-
-  useEffect(() => {
-    const savedLugar = sessionStorage.getItem("selectedLugar");
-    const savedPrecio = sessionStorage.getItem("precioEntrega");
-    if (savedLugar && savedPrecio) {
-      setSelectedLugar(savedLugar);
-      setPrecioEntrega(Number(savedPrecio));
-    }
-  }, []);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -32,14 +23,9 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({
   };
 
   const handleGeneratePDF = () => {
-    const productos = [
-      { nombre: "Galletones de Avena", cantidad: 12, precio: 30 },
-      { nombre: "Conitos con Crema", cantidad: 20, precio: 45 },
-    ];
-
     generateOrderPDF(
       10001, // Número de pedido
-      productos,
+      cart,
       selectedLugar || "",
       "25/07/2024 15:00 pm", // Fecha y hora de entrega
       totalPedido,
@@ -49,11 +35,9 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({
 
   const handleWhatsAppSend = () => {
     handleGeneratePDF();
-
     if (comprobante) {
-      const phoneNumber = "59171234567"; // Reemplaza con el número de teléfono del vendedor
+      const phoneNumber = "59171234567";
       const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=Hola,%20adjunto%20mi%20comprobante%20de%20pago%20y%20el%20detalle%20de%20mi%20pedido.`;
-
       window.open(url, "_blank");
     }
   };

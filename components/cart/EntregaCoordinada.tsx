@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Select, SelectItem, Button, Card, Link } from "@nextui-org/react";
 import { DatePicker } from "@nextui-org/date-picker";
-import {
-  now,
-  getLocalTimeZone,
-  parseZonedDateTime,
-  ZonedDateTime,
-} from "@internationalized/date";
-import ProgressBar from "../common/ProgressBar";
-
+import { useOrder } from "./OrderContext";
+import { now, getLocalTimeZone, ZonedDateTime } from "@internationalized/date";
 const entregaOpciones = [
   { label: "Terminal de Buses", precio: 0 },
   { label: "Plaza del Estudiante", precio: 5 },
@@ -17,52 +11,19 @@ const entregaOpciones = [
   { label: "Plaza Triangular", precio: 10 },
 ];
 
-const EntregaCoordinada = () => {
-  const [selectedLugar, setSelectedLugar] = useState<string | null>(null);
-  const [precioEntrega, setPrecioEntrega] = useState<number>(0);
-  const [selectedDate, setSelectedDate] = useState<ZonedDateTime | null>(null);
-
-  useEffect(() => {
-    const savedData = localStorage.getItem("entregaData");
-    if (savedData) {
-      const parsedData = JSON.parse(savedData);
-      if (
-        parsedData.lugar &&
-        parsedData.precio !== undefined &&
-        parsedData.fecha
-      ) {
-        setSelectedLugar(parsedData.lugar);
-        setPrecioEntrega(parsedData.precio);
-        setSelectedDate(parseZonedDateTime(parsedData.fecha));
-        console.log("Datos recuperados:", parsedData);
-      }
-    } else {
-      // Si no hay datos guardados, inicializa con los valores por defecto
-      setSelectedDate(now(getLocalTimeZone()));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (selectedLugar !== null && selectedDate !== null) {
-      const entregaData = {
-        lugar: selectedLugar,
-        precio: precioEntrega,
-        fecha: selectedDate.toString(),
-      };
-      localStorage.setItem("entregaData", JSON.stringify(entregaData));
-      console.log("Datos guardados:", entregaData);
-    }
-  }, [selectedLugar, precioEntrega, selectedDate]);
+const EntregaCoordinada: React.FC = () => {
+  const {
+    selectedLugar,
+    setSelectedLugar,
+    precioEntrega,
+    setPrecioEntrega,
+    selectedDate,
+    setSelectedDate,
+  } = useOrder();
 
   const handleSelectionChange = (keys: string | Set<React.Key>) => {
-    let selectedLabel: string;
-
-    if (typeof keys === "string") {
-      selectedLabel = keys;
-    } else {
-      selectedLabel = Array.from(keys).join("");
-    }
-
+    const selectedLabel =
+      typeof keys === "string" ? keys : Array.from(keys).join("");
     const selectedOption = entregaOpciones.find(
       (option) => option.label === selectedLabel
     );
@@ -93,11 +54,7 @@ const EntregaCoordinada = () => {
             variant="faded"
           >
             {entregaOpciones.map((option) => (
-              <SelectItem
-                key={option.label}
-                value={option.label}
-                textValue={`${option.label} - Bs.${option.precio}`}
-              >
+              <SelectItem key={option.label} value={option.label}>
                 {option.label} - Bs.{option.precio}
               </SelectItem>
             ))}
@@ -111,7 +68,7 @@ const EntregaCoordinada = () => {
             variant="faded"
             hideTimeZone
             showMonthAndYearPickers
-            value={selectedDate ?? now(getLocalTimeZone())} // Usa la fecha guardada o la fecha actual si no hay
+            value={selectedDate ?? now(getLocalTimeZone())}
             onChange={handleDateChange}
             className="rounded-xl border-custom-brown dark:text-white"
           />
@@ -121,15 +78,15 @@ const EntregaCoordinada = () => {
           </p>
         </div>
 
-        <Button
-          color="primary"
-          size="lg"
-          as={Link}
-          href="/pago"
-          className="mt-4 bg-custom-brown-light font-bold text-white"
-        >
-          Confirmar y Realizar Pago
-        </Button>
+        <Link href="/entrega">
+          <Button
+            color="primary"
+            size="lg"
+            className="bg-custom-brown-light font-bold text-white"
+          >
+            Confirmar y Realizar Pago
+          </Button>
+        </Link>
       </Card>
     </div>
   );

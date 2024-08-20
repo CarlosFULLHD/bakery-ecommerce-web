@@ -20,46 +20,32 @@ import {
   SliderThumbItem,
 } from "@/components/ui/carousel";
 import QuantityCounter from "./QuantityCounter";
-import { useCart } from '@/components/cart/CartContext';  // Importar el contexto del carrito
-import { log } from "console";
-
-export interface Masita {
-  nombre: string;
-  precio: number;
-  imagen_lowres: string;
-  descripcion?: string;
-  imagenes?: string[];
-  p_u1: number;
-  p_u2: number;
-  p_u3: number;
-  p_u4: number;
-  p_u5: number;
-}
+import { useOrder } from "@/components/cart/OrderContext";
+import { Masita } from "./MasitasSection";
 
 interface MasitaCardProps {
   masita: Masita;
   isDetailed?: boolean;
 }
 
-const MasitaCard: React.FC<MasitaCardProps> = ({ masita, isDetailed = false }) => {
+const MasitaCard: React.FC<MasitaCardProps> = ({
+  masita,
+  isDetailed = false,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [quantity, setQuantity] = useState(12);
-  const [totalPrice, setTotalPrice] = useState(masita.p_u1 * 12);
-  const { addToCart } = useCart();  // Usar el hook para añadir al carrito
+  const [quantity, setQuantity] = useState(9); // Set initial quantity to 9
+  const [totalPrice, setTotalPrice] = useState(masita.p_u1 * 9);
+  const { addToCart } = useOrder();
 
   const handleQuantityChange = (newQuantity: number) => {
     setQuantity(newQuantity);
     let pricePerUnit = masita.p_u1;
 
     if (newQuantity >= 51) {
-      pricePerUnit = masita.p_u5;
-    } else if (newQuantity >= 41) {
-      pricePerUnit = masita.p_u4;
-    } else if (newQuantity >= 31) {
       pricePerUnit = masita.p_u3;
     } else if (newQuantity >= 18) {
       pricePerUnit = masita.p_u2;
-    } else if (newQuantity >= 13) {
+    } else {
       pricePerUnit = masita.p_u1;
     }
 
@@ -67,28 +53,20 @@ const MasitaCard: React.FC<MasitaCardProps> = ({ masita, isDetailed = false }) =
   };
 
   const handleAddToCart = () => {
-    console.log("Adding to cart...");
-    try {
-      addToCart({
-        id: masita.nombre, 
-        nombre: masita.nombre,
-        imagen: masita.imagen_lowres,
-        cantidad: quantity,
-        precio: totalPrice / quantity,
-      });
-      console.log("Item added to cart");
-      onClose(); // Cerrar modal después de añadir al carrito
-    } catch (error) {
-      console.error("Failed to add to cart:", error);
-    }
+    addToCart({
+      id: masita.nombre,
+      nombre: masita.nombre,
+      imagen: masita.imagen_lowres,
+      cantidad: quantity,
+      precio: totalPrice, // Save the calculated total price
+    });
+    onClose(); // Close the modal after adding to cart
   };
-  
-  
 
   return (
     <div>
       <Card
-        className="cursor-pointer w-full bg-background-dark rounded-lg min-h-[210px]" // Añadir min-h para la altura mínima de la tarjeta
+        className="cursor-pointer w-full bg-background-dark rounded-lg min-h-[210px]"
         isPressable
         onClick={onOpen}
       >
@@ -96,7 +74,7 @@ const MasitaCard: React.FC<MasitaCardProps> = ({ masita, isDetailed = false }) =
           <Image
             width="100%"
             alt={masita.nombre}
-            className="w-full h-[150px] min-h-[150px] object-cover rounded-sm" // Añadir min-h para la imagen
+            className="w-full h-[150px] min-h-[150px] object-cover rounded-sm"
             src={masita.imagen_lowres}
           />
         </CardBody>
@@ -105,11 +83,7 @@ const MasitaCard: React.FC<MasitaCardProps> = ({ masita, isDetailed = false }) =
             {masita.nombre}
           </h1>
         </CardFooter>
-
-
-
       </Card>
-
 
       {isDetailed && (
         <Modal
@@ -127,7 +101,10 @@ const MasitaCard: React.FC<MasitaCardProps> = ({ masita, isDetailed = false }) =
               <ModalBody>
                 <div className="md:grid md:grid-cols-3 md:gap-4">
                   <div className="md:col-span-2">
-                    <Carousel orientation="vertical" className="flex items-center gap-2">
+                    <Carousel
+                      orientation="vertical"
+                      className="flex items-center gap-2"
+                    >
                       <div className="relative basis-3/4 flex justify-center bg-background-dark">
                         <CarouselMainContainer className="h-40 md:h-64 md:w-80">
                           {masita.imagenes?.map((img, index) => (
@@ -166,14 +143,12 @@ const MasitaCard: React.FC<MasitaCardProps> = ({ masita, isDetailed = false }) =
                   <div className="md:col-span-1">
                     <p className="text-xl mt-4 md:mt-0">{masita.descripcion}</p>
                     <div className="mt-4">
-                      <QuantityCounter 
-                        minQuantity={12} 
+                      <QuantityCounter
+                        minQuantity={9}
                         initialQuantity={quantity}
-                        p_u1={masita.p_u1} 
-                        p_u2={masita.p_u2} 
-                        p_u3={masita.p_u3} 
-                        p_u4={masita.p_u4} 
-                        p_u5={masita.p_u5}
+                        p_u1={masita.p_u1}
+                        p_u2={masita.p_u2}
+                        p_u3={masita.p_u3}
                         onQuantityChange={handleQuantityChange}
                       />
                     </div>

@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import { MobileSidebar } from "@/components/common/MobileSidebar";
 import Sidebar from "@/components/common/Sidebar";
+import { OrderProvider } from "@/components/cart/OrderContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://carlitosnina.com"),
@@ -65,7 +66,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="light" suppressHydrationWarning> {/* Aplica la clase 'light' directamente aquí */}
+    <html lang="en" className="light" suppressHydrationWarning>
+      {" "}
+      {/* Aplica la clase 'light' directamente aquí */}
       <body
         className={clsx(
           "min-h-screen font-sans antialiased bg-custom-background ",
@@ -74,19 +77,21 @@ export default function RootLayout({
         style={{ zIndex: 0 }}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          <div className="relative flex flex-col h-full">
-            <div className="h-12 md:h-10 lg:h-12 xl:h-14 fixed inset-y-0 w-full z-40 bg-custom-background">
-              <div className="pl-6 md:p-4 border-b h-full flex items-center shadow-sm z-50 bg-custom-background text-white">
-                <MobileSidebar />
-                <Navbar />
+          <OrderProvider>
+            <div className="relative flex flex-col h-full">
+              <div className="h-12 md:h-10 lg:h-12 xl:h-14 fixed inset-y-0 w-full z-40 bg-custom-background">
+                <div className="pl-6 md:p-4 border-b h-full flex items-center shadow-sm z-50 bg-custom-background text-white">
+                  <MobileSidebar />
+                  <Navbar />
+                </div>
               </div>
+              <main className="relative bg-custom-background mt-10">
+                {children}
+              </main>
+              <Analytics />
+              <footer className="w-full flex items-center justify-center py-3"></footer>
             </div>
-            <main className="relative bg-custom-background mt-10">
-              {children}
-            </main>
-            <Analytics />
-            <footer className="w-full flex items-center justify-center py-3"></footer>
-          </div>
+          </OrderProvider>
         </Providers>
       </body>
     </html>

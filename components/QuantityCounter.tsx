@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Plus, Minus } from 'lucide-react';
+import React, { useState, useEffect, useRef } from "react";
+import { Plus, Minus } from "lucide-react";
 
 interface QuantityCounterProps {
   minQuantity: number;
@@ -7,8 +7,6 @@ interface QuantityCounterProps {
   p_u1: number;
   p_u2: number;
   p_u3: number;
-  p_u4: number;
-  p_u5: number;
   onQuantityChange: (quantity: number, totalPrice: number) => void;
   showTotalPrice?: boolean;
 }
@@ -19,8 +17,6 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
   p_u1,
   p_u2,
   p_u3,
-  p_u4,
-  p_u5,
   onQuantityChange,
   showTotalPrice = true,
 }) => {
@@ -35,7 +31,8 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
   }, [quantity]);
 
   const handleIncrement = () => setQuantity((prev) => prev + 1);
-  const handleDecrement = () => setQuantity((prev) => (prev > minQuantity ? prev - 1 : prev));
+  const handleDecrement = () =>
+    setQuantity((prev) => (prev > minQuantity ? prev - 1 : prev));
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuantity(parseInt(event.target.value, 10));
@@ -51,15 +48,9 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
     let pricePerUnit = p_u1;
 
     if (quantity >= 51) {
-      pricePerUnit = p_u5;
-    } else if (quantity >= 41) {
-      pricePerUnit = p_u4;
-    } else if (quantity >= 31) {
       pricePerUnit = p_u3;
     } else if (quantity >= 18) {
       pricePerUnit = p_u2;
-    } else if (quantity >= 13) {
-      pricePerUnit = p_u1;
     }
 
     const total = quantity * pricePerUnit;
@@ -70,22 +61,22 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
 
   const startIncrement = () => {
     if (isFirstPressRef.current) {
-      handleIncrement(); // Incrementa una vez inmediatamente
+      handleIncrement();
       isFirstPressRef.current = false;
     }
     delayRef.current = setTimeout(() => {
       intervalRef.current = setInterval(handleIncrement, 200);
-    }, 500); // Comienza a incrementar continuamente después de 0.5 segundos
+    }, 500);
   };
 
   const startDecrement = () => {
     if (isFirstPressRef.current) {
-      handleDecrement(); // Decrementa una vez inmediatamente
+      handleDecrement();
       isFirstPressRef.current = false;
     }
     delayRef.current = setTimeout(() => {
       intervalRef.current = setInterval(handleDecrement, 200);
-    }, 500); // Comienza a decrementar continuamente después de 0.5 segundos
+    }, 500);
   };
 
   const stopInterval = () => {
@@ -95,7 +86,7 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
     if (delayRef.current) {
       clearTimeout(delayRef.current);
     }
-    isFirstPressRef.current = true; // Resetear para la próxima interacción
+    isFirstPressRef.current = true;
   };
 
   return (
@@ -115,21 +106,20 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
           onTouchEnd={stopInterval}
           disabled={quantity <= minQuantity}
         >
-          <Minus size={20} className='text-black'/>
+          <Minus size={20} className="text-black" />
         </button>
-          <input
+        <input
           type="number"
           value={quantity}
           onChange={handleQuantityChange}
           onBlur={handleBlur}
           className="w-16 text-center text-black border border-gray-300 rounded p-2 bg-white focus:outline-none focus:border-gray-500"
           style={{
-            // Ocultar los botones de incremento/decremento
-            MozAppearance: 'textfield', // Firefox
-            WebkitAppearance: 'none', // Safari y Chrome
-            appearance: 'none', // Otros navegadores
+            MozAppearance: "textfield",
+            WebkitAppearance: "none",
+            appearance: "none",
           }}
-          onFocus={(event) => event.target.select()} // Selecciona todo el texto al hacer clic
+          onFocus={(event) => event.target.select()}
         />
         <button
           className="btn btn-increment border rounded bg-white p-2"
@@ -139,7 +129,7 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
           onTouchStart={startIncrement}
           onTouchEnd={stopInterval}
         >
-          <Plus size={20} className='text-black'/>
+          <Plus size={20} className="text-black" />
         </button>
       </div>
     </div>
