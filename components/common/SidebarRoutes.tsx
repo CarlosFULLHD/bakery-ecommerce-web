@@ -6,20 +6,20 @@ import {
   HelpCircle,
   Star,
   Phone,
-  Instagram,
-  Linkedin,
-  Facebook,
-  Youtube,
-  Twitter,
+  ShoppingCart,
 } from "lucide-react";
 import { SidebarItem } from "./SidebarItem";
 
 export const routes = [
-  { icon: ShoppingBag, label: "Cómo Realizar un Pedido", href: "#pedido" },
-  { icon: Info, label: "Sobre Nosotros", href: "#sobre-nosotros" },
-  { icon: HelpCircle, label: "Preguntas Frecuentes", href: "#preguntas-frecuentes" },
-  { icon: Star, label: "Reseñas", href: "#resenas" },
-  { icon: Phone, label: "Contacto", href: "#contacto" },
+  { icon: ShoppingBag, label: "Cómo Realizar un Pedido", href: "/pedido" },
+  { icon: Info, label: "Sobre Nosotros", href: "/sobre-nosotros" },
+  {
+    icon: HelpCircle,
+    label: "Preguntas Frecuentes",
+    href: "/preguntas-frecuentes",
+  },
+  { icon: Star, label: "Reseñas", href: "/resenas" },
+  { icon: Phone, label: "Contacto", href: "/contacto" },
 ];
 
 export const SidebarRoutes = () => {

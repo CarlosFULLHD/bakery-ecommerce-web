@@ -3,7 +3,6 @@
 import { LucideIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { scrollIntoView } from "@/utils/scrollIntoView";
 
 interface SidebarItemProps {
   icon: LucideIcon;
@@ -20,7 +19,8 @@ export const SidebarItem = ({ icon: Icon, label, href }: SidebarItemProps) => {
     pathname?.startsWith(`${href}/`);
 
   const onClick = () => {
-    scrollIntoView(href.slice(1)); // Elimina el "#" del href
+    // Redirecciona a la ruta indicada
+    window.location.href = href;
   };
 
   return (

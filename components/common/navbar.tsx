@@ -12,7 +12,7 @@ import NextLink from "next/link";
 import ModalComponentContanctame from "../ModalComponentContanctame";
 import { scrollIntoView } from "@/utils/scrollIntoView";
 import { routes } from "./SidebarRoutes";
-
+import { ShoppingCart } from "lucide-react";
 export const Navbar = () => {
   return (
     <NextUINavbar
@@ -23,7 +23,16 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <Link className="flex justify-start gap-1" href="/"></Link>
       </NavbarContent>
+      <NavbarContent className="basis-1/5 sm:basis-full" justify="end">
+        <NextLink
+          className="flex justify-start gap-1"
+          href="/carrito"
+        >
+          <ShoppingCart />
+        </NextLink>
+      </NavbarContent>
 
+      {/* Navbar para pc */}
       <NavbarContent
         className="hidden md:flex basis-1/5 sm:basis-full"
         justify="end"
@@ -33,7 +42,7 @@ export const Navbar = () => {
             <NavbarItem key={item.href}>
               <button
                 className="text-white text-xs lg:text-lg flex items-center gap-2"
-                onClick={() => scrollIntoView(item.href.slice(1))} // Elimina el "#" del href
+                onClick={() => scrollIntoView(item.href.slice(1))}
               >
                 <item.icon className="w-5 h-5" />
                 {item.label}
@@ -41,7 +50,6 @@ export const Navbar = () => {
             </NavbarItem>
           ))}
         </ul>
-
       </NavbarContent>
     </NextUINavbar>
   );

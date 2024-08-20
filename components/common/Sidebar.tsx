@@ -13,7 +13,7 @@ const Sidebar = () => {
       </div>
       <div className="flex flex-col w-full">
         <SidebarRoutes />
-        <ModalComponentContanctame />
+        
       </div>
     </div>
   );
