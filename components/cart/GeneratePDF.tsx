@@ -2,10 +2,10 @@ import React, { useRef } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { Button } from "@nextui-org/react";
-import { useCart } from "./CartContext";
+import { useOrder } from "./OrderContext";
 
 const GeneratePDF: React.FC = () => {
-  const { cart, cartTotalPrice } = useCart();
+  const { cart, cartTotalPrice } = useOrder();
   const pdfRef = useRef<HTMLDivElement>(null);
 
   const generatePDF = () => {

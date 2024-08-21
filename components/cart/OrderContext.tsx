@@ -81,7 +81,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
               ? {
                   ...cartItem,
                   cantidad: cartItem.cantidad + item.cantidad,
-                  precio: cartItem.precio + item.precio,
+                  // No sumes el precio aquí
                 }
               : cartItem
           )
@@ -112,10 +112,10 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
-  const cartTotalPrice = cart.reduce(
-    (total, item) => total + item.precio * item.cantidad,
-    0
-  );
+  const cartTotalPrice = cart.reduce((total, item) => {
+    // Aquí simplemente sumamos el precio total de cada ítem, ya que `precio` ya incluye la cantidad.
+    return total + item.precio;
+  }, 0);
 
   console.log("Current cart total price:", cartTotalPrice);
 

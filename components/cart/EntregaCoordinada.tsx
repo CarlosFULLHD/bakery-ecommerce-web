@@ -55,14 +55,18 @@ const EntregaCoordinada: React.FC = () => {
           </p>
           <Select
             aria-label="Selecciona un lugar de entrega"
-            placeholder={`Selecciona lugar de entrega - Bs.${precioEntrega}`}
+            placeholder="Lugar de entrega  - Bs. precio"
             selectedKeys={selectedLugar ? new Set([selectedLugar]) : undefined}
             onSelectionChange={handleSelectionChange}
             label="Lugar de entrega"
             variant="faded"
           >
             {entregaOpciones.map((option) => (
-              <SelectItem key={option.label} value={option.label}>
+              <SelectItem
+                key={option.label}
+                value={option.label}
+                textValue={`${option.label} - Bs.${option.precio}`}
+              >
                 {option.label} - Bs.{option.precio}
               </SelectItem>
             ))}
