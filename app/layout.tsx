@@ -11,7 +11,8 @@ import Script from "next/script";
 import { MobileSidebar } from "@/components/common/MobileSidebar";
 import Sidebar from "@/components/common/Sidebar";
 import { OrderProvider } from "@/components/cart/OrderContext";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://carlitosnina.com"),
   title: {
@@ -87,6 +88,18 @@ export default function RootLayout({
               </div>
               <main className="relative bg-custom-background mt-10">
                 {children}
+                <ToastContainer
+                  position="top-right"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="colored"
+                />
               </main>
               <Analytics />
               <footer className="w-full flex items-center justify-center py-3"></footer>

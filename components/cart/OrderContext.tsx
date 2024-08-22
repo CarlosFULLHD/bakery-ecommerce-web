@@ -1,5 +1,6 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import {
   ZonedDateTime,
   now,
@@ -87,6 +88,10 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
           )
         : [...prevCart, item];
       console.log("Adding item to cart:", item);
+      toast.success(
+        `${item.cantidad} ${item.nombre} han sido añadidos al carrito`
+      );
+      console.log("Adding item to cart:", item);
       console.log("Updated cart:", newCart);
       return newCart;
     });
@@ -97,6 +102,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
       const updatedCart = prevCart.map((item) =>
         item.id === id ? { ...item, cantidad } : item
       );
+      toast.info(`Cantidad actualizada a ${cantidad} para ${id}`);
       console.log("Updating quantity in cart:", { id, cantidad });
       console.log("Updated cart:", updatedCart);
       return updatedCart;
@@ -106,6 +112,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
   const removeFromCart = (id: string) => {
     setCart((prevCart) => {
       const filteredCart = prevCart.filter((item) => item.id !== id);
+      toast.error(`${id} ha sido eliminado del carrito`);
       console.log("Removing item from cart:", id);
       console.log("Updated cart:", filteredCart);
       return filteredCart;
