@@ -28,6 +28,8 @@ interface OrderContextProps {
   setSelectedLugar: (lugar: string) => void;
   setPrecioEntrega: (precio: number) => void;
   setSelectedDate: (date: ZonedDateTime) => void;
+  nota: string;
+  setNota: (nota: string) => void;
 }
 
 const OrderContext = createContext<OrderContextProps | undefined>(undefined);
@@ -39,6 +41,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
   const [selectedLugar, setSelectedLugar] = useState<string | null>(null);
   const [precioEntrega, setPrecioEntrega] = useState<number>(0);
   const [selectedDate, setSelectedDate] = useState<ZonedDateTime | null>(null);
+  const [nota, setNota] = useState<string>(""); // Estado para la nota
 
   // Load data from sessionStorage when the component mounts
   useEffect(() => {
@@ -56,6 +59,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
           ? parseZonedDateTime(parsedData.selectedDate)
           : now(getLocalTimeZone())
       );
+      setNota(parsedData.nota || ""); // Recuperar la nota guardada
     } else {
       setSelectedDate(now(getLocalTimeZone()));
     }
@@ -68,10 +72,12 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
       selectedLugar,
       precioEntrega,
       selectedDate: selectedDate ? selectedDate.toString() : null,
+      nota,
     };
     console.log("Saving orderData to sessionStorage:", orderData);
     sessionStorage.setItem("orderData", JSON.stringify(orderData));
-  }, [cart, selectedLugar, precioEntrega, selectedDate]);
+  }, [cart, selectedLugar, precioEntrega, selectedDate, nota]);
+
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
@@ -140,6 +146,8 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
         setSelectedLugar,
         setPrecioEntrega,
         setSelectedDate,
+        nota,
+        setNota,
       }}
     >
       {children}

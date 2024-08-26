@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Select, SelectItem, Button, Card, Link } from "@nextui-org/react";
+import { Select, SelectItem, Button, Card, Link, Textarea } from "@nextui-org/react";
 import { DatePicker } from "@nextui-org/date-picker";
 import { useOrder } from "./OrderContext";
 import { now, getLocalTimeZone, ZonedDateTime } from "@internationalized/date";
@@ -20,6 +20,8 @@ const EntregaCoordinada: React.FC = () => {
     setPrecioEntrega,
     selectedDate,
     setSelectedDate,
+    nota,
+    setNota,
   } = useOrder();
 
   // Ensure date is only set in the client side
@@ -43,6 +45,10 @@ const EntregaCoordinada: React.FC = () => {
 
   const handleDateChange = (date: ZonedDateTime) => {
     setSelectedDate(date);
+  };
+
+  const handleNotaChange = (newValue: string) => {
+    setNota(newValue); // Actualiza la nota en el contexto
   };
 
   return (
@@ -84,7 +90,14 @@ const EntregaCoordinada: React.FC = () => {
             onChange={handleDateChange}
             className="rounded-xl border-custom-brown dark:text-white"
           />
-
+          <p className="mt-4 text-custom-brown">Nota Adicional:</p>
+          <Textarea
+            label="Detalles adicionales sobre la ubicación, datos adicionales o mensaje."
+            placeholder="Escribe cualquier detalle adicional..."
+            value={nota} 
+            onValueChange={handleNotaChange} 
+            className="mt-2"
+          />
           <p className="mt-2 text-xs text-custom-brown">
             Nota: La hora de encuentro podría variar según disponibilidad.
           </p>
