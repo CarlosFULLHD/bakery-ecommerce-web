@@ -13,7 +13,7 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({
   qrUrl,
   totalPedido,
 }) => {
-  const { selectedLugar, precioEntrega, cart, selectedDate, cartTotalPrice } = useOrder();
+  const { selectedLugar, precioEntrega, cart, selectedDate, cartTotalPrice,nota, } = useOrder();
 
   const handleGeneratePDF = () => {
     generateOrderPDF(
@@ -22,7 +22,8 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({
       selectedLugar || "",
       selectedDate?.toString() || "Fecha no disponible", // Fecha y hora de entrega
       totalPedido,
-      precioEntrega
+      precioEntrega,  
+      nota
     );
   };
 
