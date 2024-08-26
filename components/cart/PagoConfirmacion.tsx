@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card, Accordion, AccordionItem } from "@nextui-org/react";
 import { useOrder } from "./OrderContext";
 import { generateOrderPDF } from "@/utils/pdfUtils";
+import CartItem from "@/components/cart/CartItem";
 
 interface PagoConfirmacionProps {
   qrUrl: string;
@@ -12,7 +13,7 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({
   qrUrl,
   totalPedido,
 }) => {
-  const { selectedLugar, precioEntrega, cart, selectedDate } = useOrder();
+  const { selectedLugar, precioEntrega, cart, selectedDate, cartTotalPrice } = useOrder();
 
   const handleGeneratePDF = () => {
     generateOrderPDF(
@@ -32,6 +33,8 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({
     window.open(url, "_blank");
   };
 
+  const halfPrice = (cartTotalPrice * 0.5).toFixed(2);
+
   return (
     <div className="p-4 max-w-lg mx-auto">
       <Card className="mt-8 p-4 bg-background-dark text-custom-brown">
@@ -42,37 +45,54 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({
           <p className="mt-4">Para completar tu pedido, sigue estos pasos:</p>
 
           <div className="mt-6">
-            <div className="mt-6">
-              <h4 className="text-lg lg:text-xl">
-                1. Revisa los detalles de tu pedido
-              </h4>
-              <p className="text-sm mt-2">
-                Puedes revisar los detalles de tu pedido antes de confirmarlo.
-              </p>
-              <Accordion variant="splitted" className="my-4">
-                <AccordionItem
-                  key="1"
-                  aria-label="Detalles del pedido"
-                  title="Ver Detalles del pedido"
-                  className="bg-background-darker"
-                >
-                  <div className="mt-4">
-                    {cart.map((item, index) => (
-                      <div key={index} className="mb-2">
-                        <p>
-                          <strong>{item.nombre}</strong>: {item.cantidad} x Bs.
-                          {item.precio} = Bs.{item.cantidad * item.precio}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </AccordionItem>
-              </Accordion>
-            </div>
-            <h4 className="text-lg lg:text-xl">2. Realiza el pago</h4>
+            <h4 className="text-lg lg:text-xl">
+              1. Revisa los detalles de tu pedido
+            </h4>
             <p className="text-sm mt-2">
-              Por favor, realiza un pago de <strong>Bs.{totalPedido}</strong> o
-              al menos el 50% del pedido utilizando el código QR que aparece a
+              Puedes revisar los detalles de tu pedido antes de confirmarlo.
+            </p>
+            <Accordion variant="splitted" className="my-4">
+              <AccordionItem
+                key="1"
+                aria-label="Detalles del pedido"
+                title="Ver Detalles del pedido"
+                className="bg-background-darker"
+              >
+                <div className="mt-4">
+                  {cart.map((item) => (
+                    <CartItem key={item.id} {...item} />
+                  ))}
+                </div>
+              </AccordionItem>
+            </Accordion>
+            <div className="mt-8">
+              <h2 className="text-2xl font-bold">
+                Total: Bs. {cartTotalPrice.toFixed(2)}
+              </h2>
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <h4 className="text-lg lg:text-xl">
+              2. Descarga los detalles del pedido
+            </h4>
+            <p className="text-sm mt-2">
+              Descarga el PDF con los detalles de tu pedido para enviarlo junto
+              con tu comprobante de pago (después de realizar el pago).
+            </p>
+            <Button
+              color="primary"
+              className="mt-2 bg-custom-brown-light"
+              onClick={handleGeneratePDF}
+            >
+              Descargar Detalles del Pedido
+            </Button>
+          </div>
+
+          <div className="mt-6">
+            <h4 className="text-lg lg:text-xl">3. Realiza el pago</h4>
+            <p className="text-sm mt-2">
+              Por favor, realiza un pago del 50% <strong>Bs.{halfPrice}</strong> del pedido utilizando el código QR que aparece a
               continuación.
             </p>
             <div className="mt-4 flex flex-col items-center">
@@ -86,24 +106,7 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({
 
           <div className="mt-6">
             <h4 className="text-lg lg:text-xl">
-              3. Descarga los detalles del pedido
-            </h4>
-            <p className="text-sm mt-2">
-              Descarga el PDF con los detalles de tu pedido para enviarlo junto
-              con tu comprobante de pago.
-            </p>
-            <Button
-              color="primary"
-              className="mt-2 bg-custom-brown-light"
-              onClick={handleGeneratePDF}
-            >
-              Descargar Detalles del Pedido
-            </Button>
-          </div>
-
-          <div className="mt-6">
-            <h4 className="text-lg lg:text-xl">
-              4. Envía el PDF y el comprobante de pago
+              4. Envía el PDF de los Detalles del Pedido y el comprobante de pago
             </h4>
             <p className="text-sm mt-2">
               Envía el PDF descargado y una imagen del comprobante de pago al
