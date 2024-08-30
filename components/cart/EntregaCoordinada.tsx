@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Select, SelectItem, Button, Card, Link, Textarea } from "@nextui-org/react";
 import { DatePicker } from "@nextui-org/date-picker";
 import { useOrder } from "./OrderContext";
+import GoogleMapLocation from "./GoogleMapLocation";
 import { now, getLocalTimeZone, ZonedDateTime } from "@internationalized/date";
 
 const entregaOpciones = [
-  { label: "Terminal de Buses", precio: 0 },
-  { label: "Plaza del Estudiante", precio: 5 },
-  { label: "Obrajes Calle 2", precio: 10 },
-  { label: "Obrajes Calle 10", precio: 10 },
-  { label: "Plaza Triangular", precio: 10 },
+  { label: "Terminal de Buses", precio: 0, coords: { lat: 16.488208, lng: -68.140567 } },
+  { label: "Plaza del Estudiante", precio: 5, coords: { lat: 16.504106, lng: -68.131163 } },
+  { label: "Obrajes Calle 2", precio: 10, coords: { lat: 16.500000, lng: -68.110000 } },
+  { label: "Obrajes Calle 10", precio: 10, coords: { lat: 16.510000, lng: -68.105000 } },
+  { label: "Plaza Triangular", precio: 10, coords: { lat: 16.520000, lng: -68.130000 } },
+  { label: "Personalizado", precio: 0, coords: null },
 ];
 
 const EntregaCoordinada: React.FC = () => {
@@ -23,8 +25,9 @@ const EntregaCoordinada: React.FC = () => {
     nota,
     setNota,
   } = useOrder();
+  
+  const [selectedCoords, setSelectedCoords] = useState<{ lat: number; lng: number } | null>(null);
 
-  // Ensure date is only set in the client side
   useEffect(() => {
     if (!selectedDate) {
       setSelectedDate(now(getLocalTimeZone()));
@@ -40,6 +43,7 @@ const EntregaCoordinada: React.FC = () => {
     if (selectedOption) {
       setSelectedLugar(selectedOption.label);
       setPrecioEntrega(selectedOption.precio);
+      setSelectedCoords(selectedOption.coords); // Update the selected coordinates
     }
   };
 
@@ -78,6 +82,10 @@ const EntregaCoordinada: React.FC = () => {
             ))}
           </Select>
 
+          {selectedCoords && (
+            <GoogleMapLocation lat={selectedCoords.lat} lng={selectedCoords.lng} />
+          )}
+
           <p className="text-custom-brown">
             Elige una fecha y hora para el encuentro.
           </p>
@@ -94,8 +102,8 @@ const EntregaCoordinada: React.FC = () => {
           <Textarea
             label="Detalles adicionales sobre la ubicación, datos adicionales o mensaje."
             placeholder="Escribe cualquier detalle adicional..."
-            value={nota} 
-            onValueChange={handleNotaChange} 
+            value={nota}
+            onValueChange={handleNotaChange}
             className="mt-2"
           />
           <p className="mt-2 text-xs text-custom-brown">
