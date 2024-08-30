@@ -13,7 +13,6 @@ export default function PaymentPage() {
         qrUrl={
           "https://cdn.pixabay.com/photo/2013/07/12/14/45/qr-code-148732_1280.png"
         }
-        totalPedido={100} // Use the actual total amount
       />
     </>
   );
