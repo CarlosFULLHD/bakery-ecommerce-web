@@ -89,7 +89,7 @@ export default function RootLayout({
               <main className="relative bg-custom-background mt-10">
                 {children}
                 <ToastContainer
-                  position="bottom-right"
+                  position="top-right"
                   autoClose={5000}
                   hideProgressBar={false}
                   newestOnTop

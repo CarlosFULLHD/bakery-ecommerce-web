@@ -6,14 +6,10 @@ import CartItem from "@/components/cart/CartItem";
 
 interface PagoConfirmacionProps {
   qrUrl: string;
-  totalPedido: number;
 }
 
-const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({
-  qrUrl,
-  totalPedido,
-}) => {
-  const { selectedLugar, precioEntrega, cart, selectedDate, cartTotalPrice,nota, } = useOrder();
+const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({ qrUrl }) => {
+  const { selectedLugar, precioEntrega, cart, selectedDate, cartTotalPrice, nota } = useOrder();
 
   const handleGeneratePDF = () => {
     generateOrderPDF(
@@ -21,7 +17,7 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({
       cart,
       selectedLugar || "",
       selectedDate?.toString() || "Fecha no disponible", // Fecha y hora de entrega
-      totalPedido,
+      cartTotalPrice,  
       precioEntrega,  
       nota
     );

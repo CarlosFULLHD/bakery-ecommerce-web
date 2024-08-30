@@ -89,7 +89,7 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
         <Modal
           isOpen={isOpen}
           onOpenChange={onClose}
-          className="mx-auto max-w-[1024px] min-h-full lg:min-h-[560px] p-1 sm:p-2 md:p-4 lg:p-8 rounded-lg bg-background-dark text-custom-brown"
+          className="mx-auto w-[90%] h-[90%] md:max-w-[1024px] md:max-h-[90%] p-1 sm:p-2 md:p-4 lg:p-8 rounded-lg bg-background-dark text-custom-brown"
           scrollBehavior="inside"
           placement="center"
         >
@@ -155,11 +155,18 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
                   </div>
                 </div>
               </ModalBody>
-              <ModalFooter>
+              <ModalFooter className="flex justify-between">
                 <Button
-                  className="font-bold w-full"
-                  color="primary"
-                  variant="bordered"
+                  className="font-bold border-custom-brown-light text-custom-brown-light"
+                  variant="ghost"
+                  onClick={onClose}
+                >
+                  Atrás
+                </Button>
+                <Button
+                  className="font-bold bg-custom-brown-light"
+                  
+                  
                   onClick={handleAddToCart}
                 >
                   Añadir al carrito
