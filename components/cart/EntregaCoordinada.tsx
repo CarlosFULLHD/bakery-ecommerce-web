@@ -8,9 +8,9 @@ import { now, getLocalTimeZone, ZonedDateTime } from "@internationalized/date";
 const entregaOpciones = [
   { label: "Terminal de Buses", precio: 0, coords: { lat: -16.488424, lng: -68.140702 } },
   { label: "Plaza del Estudiante", precio: 5, coords: { lat: -16.504106, lng: -68.131163 } },
-  { label: "Obrajes Calle 2", precio: 10, coords: { lat: -16.500000, lng: -68.110000 } },
-  { label: "Obrajes Calle 10", precio: 10, coords: { lat: -16.510000, lng: -68.105000 } },
-  { label: "Plaza Triangular", precio: 10, coords: { lat: -16.520000, lng: -68.130000 } },
+  { label: "Teleferico Amarillo Obrajes", precio: 10, coords: { lat: -16.519290, lng: -68.116284 } },
+  { label: "Obrajes Calle 12", precio: 10, coords: { lat: -16.527727, lng: -68.105538 } },
+  { label: "Plaza Triangular", precio: 10, coords: { lat: -16.504301, lng: -68.120898 } },
   { label: "Personalizado", precio: 0, coords: null },
 ];
 
