@@ -8,7 +8,7 @@ export default function DeliveryPage() {
 
   return (
     <>
-      <BuyBar currentStep={currentStep} backUrl="/carrito" />
+      <BuyBar currentStep={currentStep} />
       <EntregaCoordinada />
     </>
   );

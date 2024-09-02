@@ -10,7 +10,6 @@ export default function CartPage() {
     <>
       <BuyBar
         currentStep={currentStep}
-        backUrl="/#masitas" // Usa Link de Next.js para la navegación
       />
       <CartView />
     </>
