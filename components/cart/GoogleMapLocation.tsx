@@ -8,7 +8,7 @@ interface GoogleMapLocationProps {
 const GoogleMapLocation: React.FC<GoogleMapLocationProps> = ({ lat, lng }) => {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
   const mapUrl = `https://www.google.com/maps/embed/v1/view?key=${apiKey}&center=${lat},${lng}&zoom=16`;
-
+  
   return (
     <div className="my-4 w-full h-64 sm:h-80 md:h-96">
       <iframe
