@@ -18,7 +18,7 @@ export const Navbar = () => {
     <NextUINavbar
       className="bg-custom-background h-12 md:h-10 lg:h-12 xl:h-14 sticky"
       maxWidth="full"
-      shouldHideOnScroll
+      
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <Link className="flex justify-start gap-1" href="/"></Link>

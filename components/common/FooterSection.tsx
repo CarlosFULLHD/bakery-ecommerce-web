@@ -17,25 +17,25 @@ const FooterComponent: React.FC = () => {
             <hr className="my-8 border-white bg-white md:hidden" />
             <ul className="space-y-2">
               <li>
-                <Link href="/como-realizar-un-pedido" className="hover:underline">
+                <Link href="/realizar-pedido" className="hover:underline">
                   Cómo Realizar un Pedido
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/sobre-nosotros" className="hover:underline">
                   Sobre Nosotros
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/preguntas-frecuentes" className="hover:underline">
                   Preguntas Frecuentes
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/reseñas" className="hover:underline">
                   Reseñas
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/contacto" className="hover:underline">
                   Contacto

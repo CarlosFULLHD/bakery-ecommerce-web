@@ -24,8 +24,7 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({ qrUrl }) => {
   };
 
   const handleWhatsAppSend = () => {
-    handleGeneratePDF();
-    const phoneNumber = "59171234567";
+    const phoneNumber = "+59179529059";
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=Hola,%20adjunto%20mi%20comprobante%20de%20pago%20y%20el%20detalle%20de%20mi%20pedido.`;
     window.open(url, "_blank");
   };
@@ -109,23 +108,28 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({ qrUrl }) => {
               Envía el PDF descargado y una imagen del comprobante de pago al
               siguiente número de WhatsApp para confirmar tu pedido:
             </p>
-            <p className="text-lg font-bold mt-2">+591 71234567</p>
+            
             <p className="text-sm mt-2">
               Haz clic en el siguiente botón para abrir WhatsApp y enviar los
               documentos:
             </p>
+            <div className="">
+            <p className="text-lg font-bold mt-2">+591 79529059</p>
             <Button
               color="secondary"
-              className="mt-4 bg-custom-brown-light"
+              className=" bg-custom-brown-light"
               onClick={handleWhatsAppSend}
             >
               Enviar Comprobante por WhatsApp
             </Button>
+
+            </div>
+
           </div>
 
           <p className="mt-8 text-sm">
             Si tienes alguna consulta adicional o necesitas coordinar algún
-            detalle, no dudes en contactarnos por WhatsApp.
+            detalle, no dudes en contactarnos por WhatsApp. Estamos aquí para asegurarnos de que tengas la mejor experiencia posible.
           </p>
         </div>
       </Card>
