@@ -69,7 +69,7 @@ const FooterComponent: React.FC = () => {
 
         <div className="text-center md:text-left md:pl-4">
           <span className="block text-sm text-gray-300">
-            © 2024 Pastelería Ágape - Desarrollado por <a href="https://www.linkedin.com/in/carlos-nina-reynaga/" className="border-l-pink-50">Carlos Nina</a>
+            © 2024 Pastelería Ágape - Desarrollado por <a href="https://www.linkedin.com/in/carlos-nina-reynaga/" className="border-l-pink-50 underline">Carlos Nina</a>
           </span>
         </div>
       </div>
