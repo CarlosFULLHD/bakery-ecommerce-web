@@ -3,6 +3,7 @@ import { Button, Card, Accordion, AccordionItem } from "@nextui-org/react";
 import { useOrder } from "./OrderContext";
 import { generateOrderPDF } from "@/utils/pdfUtils";
 import CartItem from "@/components/cart/CartItem";
+import confetti from "canvas-confetti"; // Importamos la librería de confetti
 
 interface PagoConfirmacionProps {
   qrUrl: string;
@@ -17,16 +18,44 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({ qrUrl }) => {
       cart,
       selectedLugar || "",
       selectedDate?.toString() || "Fecha no disponible", // Fecha y hora de entrega
-      cartTotalPrice,  
-      precioEntrega,  
+      cartTotalPrice,
+      precioEntrega,
       nota
     );
+    
+    // Disparar un confetti sencillo al descargar los detalles del pedido
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
   };
 
   const handleWhatsAppSend = () => {
     const phoneNumber = "+59179529059";
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=Hola,%20adjunto%20mi%20comprobante%20de%20pago%20y%20el%20detalle%20de%20mi%20pedido.`;
     window.open(url, "_blank");
+
+    // Disparar confetti llamativo al enviar el comprobante por WhatsApp
+    confetti({
+      particleCount: 150,
+      startVelocity: 45,
+      spread: 90,
+      colors: ['#bb0000', '#ffffff'], // Puedes personalizar los colores
+      origin: { x: Math.random(), y: Math.random() - 0.2 }
+    });
+    confetti({
+      particleCount: 150,
+      angle: 60,
+      spread: 100,
+      origin: { x: 0 }
+    });
+    confetti({
+      particleCount: 150,
+      angle: 120,
+      spread: 100,
+      origin: { x: 1 }
+    });
   };
 
   const halfPrice = (cartTotalPrice * 0.5).toFixed(2);
@@ -113,7 +142,6 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({ qrUrl }) => {
               Haz clic en el siguiente botón para abrir WhatsApp y enviar los
               documentos:
             </p>
-            <div className="">
             <p className="text-lg font-bold mt-2">+591 79529059</p>
             <Button
               color="secondary"
@@ -122,9 +150,6 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({ qrUrl }) => {
             >
               Enviar Comprobante por WhatsApp
             </Button>
-
-            </div>
-
           </div>
 
           <p className="mt-8 text-sm">
