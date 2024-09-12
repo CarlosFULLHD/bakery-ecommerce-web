@@ -14,7 +14,7 @@ import { OrderProvider } from "@/components/cart/OrderContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export const metadata: Metadata = {
-  metadataBase: new URL("https://carlitosnina.com"),
+  metadataBase: new URL("https://pasteleria-agape.vercel.app"),
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
       "Descubre nuestras masitas artesanales, ideales para reuniones de célula, eventos de iglesia y celebraciones familiares. Perfectas para compartir y disfrutar juntos ",
     images: [
       {
-        url: "https://carlitosnina.com/opengraph-image.jpg",
+        url: "https://pasteleria-agape.vercel.app/opengraph-image.jpg",
         width: 1200,
         height: 630,
         alt: "Pastelería Agape",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
       "Descubre nuestras masitas artesanales, ideales para reuniones de célula, eventos de iglesia y celebraciones familiares. Perfectas para compartir y disfrutar juntos",
     images: [
       {
-        url: "https://carlitosnina.com/opengraph-image.jpg",
+        url: "https://pasteleria-agape.vercel.app/opengraph-image.jpg",
         width: 1200,
         height: 630,
         alt: "Pastelería Agape",
