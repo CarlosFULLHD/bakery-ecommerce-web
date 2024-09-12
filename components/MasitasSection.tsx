@@ -14,172 +14,186 @@ export interface Masita {
 
 const masitas: Masita[] = [
   {
-    nombre: "Galletones con Chocochips",
+    nombre: "Muffins De Vainilla Con Chocochips",
     imagen_lowres:
-      "https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/GalleroneSConChocochips.jpeg?raw=true",
-    descripcion:
-      "Deliciosos galletones de avena, perfectos para cualquier ocasión. Hechos con ingredientes naturales y un toque de amor, estos galletones son ideales para acompañar tu café de la mañana o para compartir en tus reuniones.",
+      "/MuffinsDeVainillaConChocochips1.webp",
+    descripcion: "Exquisitos muffins de vainilla con un toque de chocochips, perfectos para acompañar un café o como un delicioso snack.",
     imagenes: [
-      "https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/GalleroneSConChocochips.jpeg?raw=true",
-      "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-      "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png",
+      "/MuffinsDeVainillaConChocochips1.webp",
+      "/MuffinsDeVainillaConChocochips2.webp",
+      "/MuffinsDeVainillaConChocochips3.webp",
+      
     ],
-    p_u1: 4.0,
+    p_u1: 3.4,
+    p_u2: 3,
+    p_u3: 2.75,
+  },
+  {
+    nombre: "Conos Con Crema Pastelera",
+    imagen_lowres:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT80okKL7Q-Wjse71NmiaIrLBf4FV05kRWrbw&s",
+    descripcion: "Conos crujientes rellenos de deliciosa crema pastelera, ideales para un postre elegante o una merienda especial.",
+    imagenes: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT80okKL7Q-Wjse71NmiaIrLBf4FV05kRWrbw&s",
+      "https://i.ytimg.com/vi/PRni27jwfQA/maxresdefault.jpg",
+      "https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/ConosConCremaPastelera.jpeg?raw=true",
+    ],
+    p_u1: 3.5,
+    p_u2: 3.1,
+    p_u3: 2.9,
+  },
+  {
+    nombre: "Galletones Con Chocochips",
+    imagen_lowres:
+      "/GalletonesConChocochips1.webp",
+    descripcion: "Grandes galletas rellenas de chocochips, perfectas para cualquier momento del día.",
+    imagenes: [
+      "/GalletonesConChocochips1.webp",
+      "/GalletonesConChocochips2.webp",
+      "/GalletonesConChocochips3.webp",
+      "https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/GalleroneSConChocochips.jpeg?raw=true",
+    ],
+    p_u1: 4,
     p_u2: 3.3,
     p_u3: 2.9,
   },
   {
-    nombre: "Muffins De Vainilla Con Chocochips",
+    nombre: "Alfajores con Crema Pastelera",
     imagen_lowres:
-      "https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/MuffinsDeVainillaConChocochips.jpeg?raw=true",
-    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+      "/AlfajoresconCremaPastelera1.webp",
+    descripcion: "Alfajores rellenos de suave crema pastelera, un toque de dulzura que te encantará.",
     imagenes: [
-      "https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/MuffinsDeVainillaConChocochips.jpeg?raw=true",
-      "https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/MuffinsDeVainillaConChocochips.jpeg?raw=true",
-      "https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/MuffinsDeVainillaConChocochips.jpeg?raw=true",
-      "https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/MuffinsDeVainillaConChocochips.jpeg?raw=true",
+      "/AlfajoresconCremaPastelera1.webp",
+      "/AlfajoresconCremaPastelera2.webp",
+      
     ],
-    p_u1: 3.85,
-    p_u2: 3.5,
+    p_u1: 3.3,
+    p_u2: 2.9,
+    p_u3: 2.6,
+  },
+  {
+    nombre: "Jawitas",
+    imagen_lowres:
+      "/Jawitas1.webp",
+    descripcion: "Deliciosas jawitas hechas con los mejores ingredientes, crujientes por fuera y suaves por dentro.",
+    imagenes: [
+      "/Jawitas1.webp",
+      "/Jawitas2.webp",
+    ],
+    p_u1: 3.7,
+    p_u2: 3.3,
+    p_u3: 3,
+  },
+  {
+    nombre: "Cuñapes",
+    imagen_lowres:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0785B2V8cYASIBO0iGyN71f5c6qhasbtWWA&s",
+    descripcion: "Tradicionales cuñapes con un sabor inconfundible de queso, ideales para acompañar un café.",
+    imagenes: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0785B2V8cYASIBO0iGyN71f5c6qhasbtWWA&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS35K3fm4DzK8780P9MxDqAqV9eHgWwY34krg&s",
+    ],
+    p_u1: 3.6,
+    p_u2: 3.3,
+    p_u3: 3,
+  },
+  {
+    nombre: "Empanadas de Pollo",
+    imagen_lowres:
+      "https://chipabythedozen.com/wp-content/uploads/2019/08/empanadas-de-pollo-bolivianas-scaled.jpg",
+    descripcion: "Empanadas rellenas con un sabroso guiso de pollo, una opción perfecta para cualquier ocasión.",
+    imagenes: [
+      "https://chipabythedozen.com/wp-content/uploads/2019/08/empanadas-de-pollo-bolivianas-scaled.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfMdlY9S_eOA9HfjX1QEuoJ9gIcvTfSkjqKA&s",
+    ],
+    p_u1: 4.2,
+    p_u2: 3.85,
+    p_u3: 3.5,
+  },
+  {
+    nombre: "Bollitos de Pizza",
+    imagen_lowres:
+      "/BollitosdePizza1.webp",
+    descripcion: "Bollitos suaves con un irresistible sabor a pizza, perfectos para disfrutar en reuniones.",
+    imagenes: [
+      "/BollitosdePizza1.webp",
+      "/BollitosdePizza2.webp",
+      "/BollitosdePizza3.webp",
+    ],
+    p_u1: 4,
+    p_u2: 3.65,
+    p_u3: 3.4,
+  },
+  {
+    nombre: "Empanadas de Queso",
+    imagen_lowres:
+      "https://i.ytimg.com/vi/srGzn1xsL2o/maxresdefault.jpg",
+    descripcion: "Empanadas crujientes rellenas de queso derretido, un clásico que nunca falla.",
+    imagenes: [
+      "https://i.ytimg.com/vi/srGzn1xsL2o/maxresdefault.jpg",
+      "https://www.donitalo.com/wp-content/uploads/2020/06/empanada-300x300.png"
+    ],
+    p_u1: 3.5,
+    p_u2: 3.1,
+    p_u3: 2.95,
+  },
+  {
+    nombre: "Alfajores con Ganache de Chocolate",
+    imagen_lowres:
+      "/AlfajoresconGanachedeChocolate1.webp",
+    descripcion: "Alfajores rellenos de ganache de chocolate, un dulce placer para los amantes del chocolate.",
+    imagenes: [
+      "AlfajoresconGanachedeChocolate1.webp",
+      "AlfajoresconGanachedeChocolate2.webp",
+    ],
+    p_u1: 3.7,
+    p_u2: 3.4,
     p_u3: 3.1,
   },
-  {
-    nombre: "Conos Con Crema Pastelera",
 
-    imagen_lowres:
-      "https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/ConosConCremaPastelera.jpeg?raw=true",
-    descripcion: "Deliciosa masita hecha con frutillas naturales.",
-    imagenes: [
-      "https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/ConosConCremaPastelera.jpeg?raw=true",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN05iwPgjpQyWegZ5Va-joJIW3t58xm97B1x8t_rMjETwTpzI7Odou8-BaDeaMVd_EuzE&usqp=CAU",
-    ],
-    p_u1: 3.0,
-    p_u2: 2.75,
-    p_u3: 2.5,
-  },
+
   {
-    nombre: "Crinkle Cookies",
+    nombre: "Ponquesitos",
     imagen_lowres:
-      "https://www.simplyrecipes.com/thmb/nhVM8Y74SV2k8pwWu1Iy8a58hDo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Chocolate-Crinkle-Cookies-Lead-6-c6459f23b77e4af9b1de2af64110c0f5.jpg",
-    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+      "/Ponquesitos1.webp",
+    descripcion: "Pequeños y esponjosos ponquesitos, ideales para acompañar una taza de té o café.",
     imagenes: [
-      "https://i.ytimg.com/vi/TKFPVHevv2A/maxresdefault.jpg",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE4VdfQT4HoHzFy8LN_hByyNcia1TXE8ORiA&s",
+      "/Ponquesitos1.webp",
+      "/Ponquesitos2.webp",
+      "/Ponquesitos3.webp",
     ],
-    p_u1: 3.0,
-    p_u2: 2.75,
-    p_u3: 2.5,
-  },
-  {
-    nombre: "Crinkle Kiss Cookies",
-    imagen_lowres:
-      "https://www.savorynothings.com/wp-content/uploads/2019/12/chocolate-crinkle-blossoms-image-hero.jpg",
-    descripcion: "Deliciosa masita hecha con frutillas naturales.",
-    imagenes: [
-      "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-      "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png",
-    ],
-    p_u1: 3.0,
-    p_u2: 2.75,
-    p_u3: 2.5,
+    p_u1: 3.4,
+    p_u2: 2.9,
+    p_u3: 2.7,
   },
   {
     nombre: "Cupcakes de Chocolate",
-
     imagen_lowres:
-      "https://i.blogs.es/04ca5c/como-hacer-cupcakes-de-chocolate-3-/1366_2000.jpg",
-    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+      "/CupcakesdeChocolate1.webp",
+    descripcion: "Deliciosos cupcakes de chocolate, suaves y con un intenso sabor a cacao.",
     imagenes: [
-      "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-      "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png",
+      "/CupcakesdeChocolate1.webp",
+      "/CupcakesdeChocolate2.webp",
+      "/CupcakesdeChocolate3.webp",
+      
     ],
-    p_u1: 3.0,
-    p_u2: 2.75,
-    p_u3: 2.5,
+    p_u1: 3.6,
+    p_u2: 3.2,
+    p_u3: 3,
   },
-  {
-    nombre: "Brownies de Chocolate",
 
-    imagen_lowres:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSVOpCkWQ9YYaZYzm7PoU5z060FbPhBzdxDQ&s",
-    descripcion: "Deliciosa masita hecha con frutillas naturales.",
-    imagenes: [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSVOpCkWQ9YYaZYzm7PoU5z060FbPhBzdxDQ&s",
-      "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png",
-    ],
-    p_u1: 3.0,
-    p_u2: 2.75,
-    p_u3: 2.5,
-  },
   {
-    nombre: "Alfajores con dulce de leche",
-
+    nombre: "Cannolis con Crema de Ricotta",
     imagen_lowres:
-      "https://media.mykaramelli.com/galeria/recetas/alfajores-de-maicena_405_1.jpg",
-    descripcion: "Deliciosa masita hecha con frutillas naturales.",
+      "/CannolisconCremadeRicotta1.webp",
+    descripcion: "Cannolis crujientes rellenos de una deliciosa crema de ricotta, un postre tradicional italiano.",
     imagenes: [
-      "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-      "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png",
+      "/CannolisconCremadeRicotta1.webp",
+      "/CannolisconCremadeRicotta2.webp",
     ],
-    p_u1: 3.0,
-    p_u2: 2.75,
-    p_u3: 2.5,
-  },
-  {
-    nombre: "Masita de Frutilla",
-
-    imagen_lowres:
-      "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-    descripcion: "Deliciosa masita hecha con frutillas naturales.",
-    imagenes: [
-      "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-      "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png",
-    ],
-    p_u1: 3.0,
-    p_u2: 2.75,
-    p_u3: 2.5,
-  },
-  {
-    nombre: "Masita de Frutilla",
-
-    imagen_lowres:
-      "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-    descripcion: "Deliciosa masita hecha con frutillas naturales.",
-    imagenes: [
-      "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-      "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png",
-    ],
-    p_u1: 3.0,
-    p_u2: 2.75,
-    p_u3: 2.5,
-  },
-  {
-    nombre: "Masita de Frutilla",
-
-    imagen_lowres:
-      "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-    descripcion: "Deliciosa masita hecha con frutillas naturales.",
-    imagenes: [
-      "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-      "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png",
-    ],
-    p_u1: 3.0,
-    p_u2: 2.75,
-    p_u3: 2.5,
-  },
-  {
-    nombre: "Masita de Frutilla",
-
-    imagen_lowres:
-      "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-    descripcion: "Deliciosa masita hecha con frutillas naturales.",
-    imagenes: [
-      "https://www.gourmet.cl/wp-content/uploads/2018/02/Galletas-2-1-570x458.jpg",
-      "https://assets.elgourmet.com/wp-content/uploads/2023/03/788f3646f9a8aadb89d5b17acf6bb1a1_3_3_photo.png",
-    ],
-    p_u1: 3.0,
-    p_u2: 2.75,
-    p_u3: 2.5,
+    p_u1: 3.4,
+    p_u2: 3.1,
+    p_u3: 2.85,
   },
 ];
 
