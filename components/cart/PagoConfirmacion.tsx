@@ -124,7 +124,7 @@ const PagoConfirmacion: React.FC<PagoConfirmacionProps> = ({ qrUrl }) => {
               <img
                 src={qrUrl}
                 alt="QR de Pago"
-                className="w-64 h-auto rounded"
+                className="w-64 h-auto rounded-2xl"
               />
             </div>
           </div>
