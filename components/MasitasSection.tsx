@@ -204,7 +204,7 @@ export const MasitasSection = () => {
 
 <div
   id="introduction"
-  className="bg-gradient-to-r from-custom-brown-light to-custom-brown-dark w-full text-center flex justify-center items-center py-4 px-6 text-white border-white border-y-2 mb-6 rounded-lg shadow-lg"
+  className="bg-gradient-to-r from-custom-brown-light to-custom-brown w-full text-center flex justify-center items-center py-4 px-6 text-white border-white border-y-2 mb-6 rounded-lg shadow-lg"
 >
   <div className="max-w-lg w-full px-4 md:max-w-xl lg:max-w-2xl">
     <span className="text-xl font-bold md:text-2xl lg:text-3xl drop-shadow-lg">
