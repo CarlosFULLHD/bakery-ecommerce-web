@@ -70,7 +70,7 @@ export const Navbar = () => {
         </div>
       }>
       <NextLink
-          className="flex justify-start gap-1 bg-custom-brown-light rounded-full p-3 lg:py-1 lg:rounded-3xl shadow-lg border-custom-brown border-2"
+          className="flex justify-start gap-1 bg-custom-brown-light rounded-full p-3 lg:py-1 lg:rounded-3xl shadow-lg border-custom-brown border-2 hover:scale-125 transition duration-500"
           href="/carrito"
         >
           <ShoppingCart />
