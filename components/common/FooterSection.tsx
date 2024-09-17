@@ -55,7 +55,7 @@ const FooterComponent: React.FC = () => {
 
           <div className="flex flex-col items-center md:items-end">
             <img
-              src="https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/PasteleriaAgape.jpeg?raw=true"
+              src="https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/PasteleriaAgape.webp?raw=true"
               alt="Logo Pastelería Ágape"
               className="w-24 h-36 mb-4 rounded-lg mx-auto"
             />

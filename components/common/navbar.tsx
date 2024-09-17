@@ -17,6 +17,7 @@ import { routes } from "./SidebarRoutes";
 import { ShoppingCart } from "lucide-react";
 import CartItem from "../cart/CartItem";
 import { useOrder } from "../cart/OrderContext";
+import { Logo } from "../icons";
 export const Navbar = () => {
   const {  cart} = useOrder();
 
@@ -27,28 +28,17 @@ export const Navbar = () => {
       
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <Link className="flex justify-start gap-1" href="/"></Link>
-      </NavbarContent>
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="end">
-      <Tooltip showArrow={true} color='foreground'        
-      content={
-        <div className="px-1 py-2">
-          <div className="text-small font-bold">Ver carrito de compras</div>
-          <div className="text-tiny">Carrito de compras actual:</div>
-          {cart.map((item) => (
-              <CartItem key={item.id} {...item} />
-            ))}
-        </div>
-      }>
-      <NextLink
-          className="flex justify-start gap-1 bg-custom-brown-light rounded-full p-3 shadow-lg border-custom-brown border-2"
-          href="/carrito"
-        >
-          <ShoppingCart />
+        <NextLink className="flex justify-start gap-1" href="/">
+          <img
+            src="PasteleriaAgapeTexto.webp"
+            alt="Pasteleria Agape Logo"
+            width={110}
+            height={30}
+            className="rounded-lg"
+            />
         </NextLink>
-      </Tooltip>
-
       </NavbarContent>
+
 
       {/* Navbar para pc */}
       <NavbarContent
@@ -58,16 +48,36 @@ export const Navbar = () => {
         <ul className="hidden md:flex gap-14 text-white">
           {routes.map((item) => (
             <NavbarItem key={item.href}>
-              <button
-                className="text-white text-xs lg:text-lg flex items-center gap-2"
-                onClick={() => scrollIntoView(item.href.slice(1))}
-              >
-                <item.icon className="w-5 h-5" />
-                {item.label}
-              </button>
+              
+                <NextLink href={item.href} passHref className="text-white text-xs lg:text-lg flex items-center gap-2">
+                  <item.icon className="w-5 h-5" />
+                  {item.label}
+                </NextLink>
+              
             </NavbarItem>
           ))}
         </ul>
+      </NavbarContent>
+      <NavbarContent className="basis-1/5 sm:basis-full lg:mr-5 " justify="end">
+      <Tooltip showArrow={true} color='foreground'        
+      content={
+        <div className="px-1 py-2">
+          <div className="text-small font-bold">Carrito de compras actual:</div>
+          
+          {cart.map((item) => (
+              <CartItem key={item.id} {...item} />
+            ))}
+        </div>
+      }>
+      <NextLink
+          className="flex justify-start gap-1 bg-custom-brown-light rounded-full p-3 lg:py-1 lg:rounded-3xl shadow-lg border-custom-brown border-2"
+          href="/carrito"
+        >
+          <ShoppingCart />
+          <h3 className="absolute invisible lg:visible lg:relative lg:ml-2 " >Carrito</h3>
+        </NextLink>
+      </Tooltip>
+
       </NavbarContent>
     </NextUINavbar>
   );

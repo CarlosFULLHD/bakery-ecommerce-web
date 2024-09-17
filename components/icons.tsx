@@ -19,7 +19,7 @@ export const Logo: React.FC<IconSvgProps> = ({
   ...props
 }) => (
   <Image
-    src="logocarlitosnina.webp"
+    src="PasteleriaAgape.jpeg"
     alt={alt}
     width={width ? Number(width) : size}
     height={height ? Number(height) : size}
