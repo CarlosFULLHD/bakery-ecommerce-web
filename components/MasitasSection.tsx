@@ -1,6 +1,7 @@
 // MasitasSection.tsx
 import React from "react";
 import MasitaCard from "./MasitaCard";
+import Link from "next/link";
 
 export interface Masita {
   nombre: string;
@@ -200,6 +201,32 @@ const masitas: Masita[] = [
 export const MasitasSection = () => {
   return (
     <section className="m-0 self-center mt-8" id="masitas">
+
+<div
+  id="introduction"
+  className="bg-gradient-to-r from-custom-brown-light to-custom-brown-dark w-full text-center flex justify-center items-center py-4 px-6 text-white border-white border-y-2 mb-6 rounded-lg shadow-lg"
+>
+  <div className="max-w-lg w-full px-4 md:max-w-xl lg:max-w-2xl">
+    <span className="text-xl font-bold md:text-2xl lg:text-3xl drop-shadow-lg">
+      📦 Pedidos a partir de 9 unidades
+    </span>
+    <p className="mt-2 text-sm md:text-base lg:text-lg text-white/90">
+      Personaliza tus masitas para eventos y pedidos grandes.{" "}
+      <Link
+        href="https://wa.me/59179529059?text=Hola,%20me%20gustaría%20consultar%20sobre%20un%20pedido%20personalizado%20de%20masitas."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline text-white/90 hover:text-white"
+        
+      >
+        ¡Consulta en WhatsApp aquí!
+      </Link>
+    </p>
+  </div>
+</div>
+
+
+
       <div className="mx-auto p-1 sm:p-2 md:p-4 lg:p-8 rounded-lg">
         <div className="mb-8">
           <div className="mx-2 grid grid-cols-2 md:grid-cols-4 gap-4 items-center max-w-[1200px] md:mx-auto">
