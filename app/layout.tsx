@@ -91,7 +91,7 @@ export default function RootLayout({
                 <ToastContainer
                   position="top-right"
                   autoClose={5000}
-                  hideProgressBar={false}
+                  hideProgressBar
                   newestOnTop
                   closeOnClick
                   rtl={false}
@@ -99,6 +99,8 @@ export default function RootLayout({
                   draggable
                   pauseOnHover
                   theme="colored"
+                  stacked
+                  style={{ top: '60px' }}
                 />
               </main>
               <Analytics />
