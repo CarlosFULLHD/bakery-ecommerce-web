@@ -98,12 +98,10 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
       )}
       <div className="flex items-center">
         <button
-          className="btn btn-decrement border rounded bg-white p-2"
+          className="btn btn-decrement border rounded-full bg-white p-2"
           onMouseDown={startDecrement}
           onMouseUp={stopInterval}
           onMouseLeave={stopInterval}
-          onTouchStart={startDecrement}
-          onTouchEnd={stopInterval}
           disabled={quantity <= minQuantity}
         >
           <Minus size={20} className="text-black" />
@@ -113,7 +111,7 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
           value={quantity}
           onChange={handleQuantityChange}
           onBlur={handleBlur}
-          className="w-16 text-center text-black border border-gray-300 rounded p-2 bg-white focus:outline-none focus:border-gray-500"
+          className="w-16 text-center text-black border border-gray-300 rounded p-2 bg-white focus:outline-none focus:border-gray-500 mx-4 lg:mx-8"
           style={{
             MozAppearance: "textfield",
             WebkitAppearance: "none",
@@ -122,12 +120,10 @@ const QuantityCounter: React.FC<QuantityCounterProps> = ({
           onFocus={(event) => event.target.select()}
         />
         <button
-          className="btn btn-increment border rounded bg-white p-2"
+          className="btn btn-increment border rounded-full bg-white p-2"
           onMouseDown={startIncrement}
           onMouseUp={stopInterval}
           onMouseLeave={stopInterval}
-          onTouchStart={startIncrement}
-          onTouchEnd={stopInterval}
         >
           <Plus size={20} className="text-black" />
         </button>
