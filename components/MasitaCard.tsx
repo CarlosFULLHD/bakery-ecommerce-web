@@ -37,19 +37,9 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
   const [totalPrice, setTotalPrice] = useState(masita.p_u1 * 9);
   const { addToCart } = useOrder();
 
-  const handleQuantityChange = (newQuantity: number) => {
+  const handleQuantityChange = (newQuantity: number, newTotalPrice: number) => {
     setQuantity(newQuantity);
-    let pricePerUnit = masita.p_u1;
-
-    if (newQuantity >= 51) {
-      pricePerUnit = masita.p_u3;
-    } else if (newQuantity >= 18) {
-      pricePerUnit = masita.p_u2;
-    } else {
-      pricePerUnit = masita.p_u1;
-    }
-
-    setTotalPrice(Math.ceil(newQuantity * pricePerUnit));
+    setTotalPrice(newTotalPrice); // Actualizamos el precio total
   };
 
   const handleAddToCart = () => {
@@ -58,9 +48,9 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
       nombre: masita.nombre,
       imagen: masita.imagen_lowres,
       cantidad: quantity,
-      precio: totalPrice, // Save the calculated total price
+      precio: totalPrice, // Guardamos el precio total calculado
     });
-    onClose(); // Close the modal after adding to cart
+    onClose(); // Cerramos el modal tras añadir al carrito
   };
 
   return (
@@ -89,7 +79,7 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
         <Modal
           isOpen={isOpen}
           onOpenChange={onClose}
-          className="mx-auto w-[90%] h-[90%] md:max-w-[1024px] md:max-h-[90%] p-1 sm:p-2 md:p-4 lg:p-8 rounded-lg bg-background-dark text-custom-brown"
+          className="mx-auto w-[90%] h-[90%] md:max-w-[620px] md:max-h-[90%] p-1 sm:p-2 md:p-4 lg:p-8 rounded-lg bg-background-dark text-custom-brown"
           scrollBehavior="inside"
           placement="center"
         >
@@ -99,14 +89,16 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
                 {masita.nombre}
               </ModalHeader>
               <ModalBody>
-                <div className="md:grid md:grid-cols-3 md:gap-4">
-                  <div className="md:col-span-2">
+                {/* Cambiamos el layout a flex-col para que se apilen verticalmente */}
+                <div className="flex flex-col items-center space-y-6">
+                  {/* Carrusel */}
+                  <div className="w-full">
                     <Carousel
                       orientation="vertical"
                       className="flex items-center gap-2"
                     >
-                      <div className="relative basis-3/4 flex justify-center bg-background-dark">
-                        <CarouselMainContainer className="h-40 md:h-64 md:w-80">
+                      <div className="relative w-full flex justify-center bg-background-dark">
+                        <CarouselMainContainer className="h-64 w-full">
                           {masita.imagenes?.map((img, index) => (
                             <SliderMainItem
                               key={index}
@@ -115,13 +107,13 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
                               <Image
                                 src={img}
                                 alt={`Slide ${index + 1}`}
-                                className="w-full h-full max-h-[150px] sm:max-h-[300px] object-cover rounded-md"
+                                className="w-full h-full max-h-[300px] object-cover rounded-md"
                               />
                             </SliderMainItem>
                           ))}
                         </CarouselMainContainer>
                       </div>
-                      <CarouselThumbsContainer className="h-40 sm:h-60 basis-1/4 bg-background-dark">
+                      <CarouselThumbsContainer className="h-20 sm:h-40 w-full flex justify-center bg-background-dark">
                         {masita.imagenes?.map((img, index) => (
                           <SliderThumbItem
                             key={index}
@@ -132,7 +124,7 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
                               <Image
                                 src={img}
                                 alt={`Slide ${index + 1}`}
-                                className="w-full h-full max-h-[150px] sm:max-h-[300px] object-cover rounded-md"
+                                className="w-full h-full max-h-[100px] sm:max-h-[200px] object-cover rounded-md"
                               />
                             </span>
                           </SliderThumbItem>
@@ -140,15 +132,19 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
                       </CarouselThumbsContainer>
                     </Carousel>
                   </div>
-                  <div className="md:col-span-1">
-                    <p className="text-xl mt-4 md:mt-0">{masita.descripcion}</p>
+
+                  {/* Descripción y contador */}
+                  <div className="w-full text-center">
+                    <p className="text-xl">{masita.descripcion}</p>
                     <div className="mt-4">
+                      <span className="font-bold text-xl lg:text-2xl block mb-2">Cantidad:</span>
                       <QuantityCounter
                         minQuantity={9}
                         initialQuantity={quantity}
                         p_u1={masita.p_u1}
                         p_u2={masita.p_u2}
                         p_u3={masita.p_u3}
+                        showTotalPrice={false}
                         onQuantityChange={handleQuantityChange}
                       />
                     </div>
@@ -165,11 +161,9 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
                 </Button>
                 <Button
                   className="font-bold bg-custom-brown-light"
-                  
-                  
                   onClick={handleAddToCart}
                 >
-                  Añadir al carrito
+                  Añadir al carrito - Bs {totalPrice.toFixed(2)}
                 </Button>
               </ModalFooter>
             </>
