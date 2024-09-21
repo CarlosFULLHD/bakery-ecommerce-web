@@ -32,12 +32,12 @@ const masitas: Masita[] = [
   {
     nombre: "Conos Con Crema Pastelera",
     imagen_lowres:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT80okKL7Q-Wjse71NmiaIrLBf4FV05kRWrbw&s",
+      "/ConosConCremaPastelera2.webp",
     descripcion: "Conos crujientes rellenos de deliciosa crema pastelera, ideales para un postre elegante o una merienda especial.",
     imagenes: [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT80okKL7Q-Wjse71NmiaIrLBf4FV05kRWrbw&s",
-      "https://i.ytimg.com/vi/PRni27jwfQA/maxresdefault.jpg",
-      "https://github.com/CarlosFULLHD/bakery-ecommerce-web/blob/main/public/ConosConCremaPastelera.jpeg?raw=true",
+      "/ConosConCremaPastelera1.webp",
+      "/ConosConCremaPastelera2.webp",
+      "/ConosConCremaPastelera3.webp",
     ],
     p_u1: 3.5,
     p_u2: 3.1,
@@ -72,72 +72,8 @@ const masitas: Masita[] = [
     p_u2: 2.9,
     p_u3: 2.6,
   },
-  {
-    nombre: "Jawitas",
-    imagen_lowres:
-      "/Jawitas1.webp",
-    descripcion: "Deliciosas jawitas hechas con los mejores ingredientes, crujientes por fuera y suaves por dentro.",
-    imagenes: [
-      "/Jawitas1.webp",
-      "/Jawitas2.webp",
-    ],
-    p_u1: 3.7,
-    p_u2: 3.3,
-    p_u3: 3,
-  },
-  {
-    nombre: "Cuñapes",
-    imagen_lowres:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0785B2V8cYASIBO0iGyN71f5c6qhasbtWWA&s",
-    descripcion: "Tradicionales cuñapes con un sabor inconfundible de queso, ideales para acompañar un café.",
-    imagenes: [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0785B2V8cYASIBO0iGyN71f5c6qhasbtWWA&s",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS35K3fm4DzK8780P9MxDqAqV9eHgWwY34krg&s",
-    ],
-    p_u1: 3.6,
-    p_u2: 3.3,
-    p_u3: 3,
-  },
-  {
-    nombre: "Empanadas de Pollo",
-    imagen_lowres:
-      "https://chipabythedozen.com/wp-content/uploads/2019/08/empanadas-de-pollo-bolivianas-scaled.jpg",
-    descripcion: "Empanadas rellenas con un sabroso guiso de pollo, una opción perfecta para cualquier ocasión.",
-    imagenes: [
-      "https://chipabythedozen.com/wp-content/uploads/2019/08/empanadas-de-pollo-bolivianas-scaled.jpg",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfMdlY9S_eOA9HfjX1QEuoJ9gIcvTfSkjqKA&s",
-    ],
-    p_u1: 4.2,
-    p_u2: 3.85,
-    p_u3: 3.5,
-  },
-  {
-    nombre: "Bollitos de Pizza",
-    imagen_lowres:
-      "/BollitosdePizza1.webp",
-    descripcion: "Bollitos suaves con un irresistible sabor a pizza, perfectos para disfrutar en reuniones.",
-    imagenes: [
-      "/BollitosdePizza1.webp",
-      "/BollitosdePizza2.webp",
-      "/BollitosdePizza3.webp",
-    ],
-    p_u1: 4,
-    p_u2: 3.65,
-    p_u3: 3.4,
-  },
-  {
-    nombre: "Empanadas de Queso",
-    imagen_lowres:
-      "https://i.ytimg.com/vi/srGzn1xsL2o/maxresdefault.jpg",
-    descripcion: "Empanadas crujientes rellenas de queso derretido, un clásico que nunca falla.",
-    imagenes: [
-      "https://i.ytimg.com/vi/srGzn1xsL2o/maxresdefault.jpg",
-      "https://www.donitalo.com/wp-content/uploads/2020/06/empanada-300x300.png"
-    ],
-    p_u1: 3.5,
-    p_u2: 3.1,
-    p_u3: 2.95,
-  },
+
+
   {
     nombre: "Alfajores con Ganache de Chocolate",
     imagen_lowres:
@@ -195,6 +131,73 @@ const masitas: Masita[] = [
     p_u1: 3.4,
     p_u2: 3.1,
     p_u3: 2.85,
+  },
+  {
+    nombre: "Jawitas",
+    imagen_lowres:
+      "/Jawitas1.webp",
+    descripcion: "Deliciosas jawitas hechas con los mejores ingredientes, crujientes por fuera y suaves por dentro.",
+    imagenes: [
+      "/Jawitas1.webp",
+      "/Jawitas2.webp",
+    ],
+    p_u1: 3.7,
+    p_u2: 3.3,
+    p_u3: 3,
+  },
+
+  {
+    nombre: "Bollitos de Pizza",
+    imagen_lowres:
+      "/BollitosdePizza1.webp",
+    descripcion: "Bollitos suaves con un irresistible sabor a pizza, perfectos para disfrutar en reuniones.",
+    imagenes: [
+      "/BollitosdePizza1.webp",
+      "/BollitosdePizza2.webp",
+      "/BollitosdePizza3.webp",
+    ],
+    p_u1: 4,
+    p_u2: 3.65,
+    p_u3: 3.4,
+  },
+  {
+    nombre: "Cuñapes",
+    imagen_lowres:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0785B2V8cYASIBO0iGyN71f5c6qhasbtWWA&s",
+    descripcion: "Tradicionales cuñapes con un sabor inconfundible de queso, ideales para acompañar un café.",
+    imagenes: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0785B2V8cYASIBO0iGyN71f5c6qhasbtWWA&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS35K3fm4DzK8780P9MxDqAqV9eHgWwY34krg&s",
+    ],
+    p_u1: 3.6,
+    p_u2: 3.3,
+    p_u3: 3,
+  },
+  {
+    nombre: "Empanadas de Pollo",
+    imagen_lowres:
+      "https://chipabythedozen.com/wp-content/uploads/2019/08/empanadas-de-pollo-bolivianas-scaled.jpg",
+    descripcion: "Empanadas rellenas con un sabroso guiso de pollo, una opción perfecta para cualquier ocasión.",
+    imagenes: [
+      "https://chipabythedozen.com/wp-content/uploads/2019/08/empanadas-de-pollo-bolivianas-scaled.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfMdlY9S_eOA9HfjX1QEuoJ9gIcvTfSkjqKA&s",
+    ],
+    p_u1: 4.2,
+    p_u2: 3.85,
+    p_u3: 3.5,
+  },
+  {
+    nombre: "Empanadas de Queso",
+    imagen_lowres:
+      "https://i.ytimg.com/vi/srGzn1xsL2o/maxresdefault.jpg",
+    descripcion: "Empanadas crujientes rellenas de queso derretido, un clásico que nunca falla.",
+    imagenes: [
+      "https://i.ytimg.com/vi/srGzn1xsL2o/maxresdefault.jpg",
+      "https://www.donitalo.com/wp-content/uploads/2020/06/empanada-300x300.png"
+    ],
+    p_u1: 3.5,
+    p_u2: 3.1,
+    p_u3: 2.95,
   },
 ];
 
