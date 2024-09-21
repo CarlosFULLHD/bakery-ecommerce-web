@@ -6,7 +6,6 @@ import {
   Image,
   Modal,
   ModalContent,
-  ModalHeader,
   ModalBody,
   ModalFooter,
   Button,
@@ -14,11 +13,12 @@ import {
 } from "@nextui-org/react";
 import {
   Carousel,
+  CarouselIndicator,
   CarouselMainContainer,
-  CarouselThumbsContainer,
+  CarouselNext,
+  CarouselPrevious,
   SliderMainItem,
-  SliderThumbItem,
-} from "@/components/ui/carousel";
+} from "@/components/ui/carousel"; // Nuevo carousel importado
 import QuantityCounter from "./QuantityCounter";
 import { useOrder } from "@/components/cart/OrderContext";
 import { Masita } from "./MasitasSection";
@@ -56,7 +56,7 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
   return (
     <div>
       <Card
-        className="cursor-pointer w-full bg-background-dark rounded-lg min-h-[210px]"
+        className="cursor-pointer w-full bg-background-dark rounded-md min-h-[210px]"
         isPressable
         onClick={onOpen}
       >
@@ -79,65 +79,53 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
         <Modal
           isOpen={isOpen}
           onOpenChange={onClose}
-          className="mx-auto w-[90%] h-[90%] md:max-w-[620px] md:max-h-[90%] p-1 sm:p-2 md:p-4 lg:p-8 rounded-lg bg-background-dark text-custom-brown"
-          scrollBehavior="inside"
+          className="w-full max-w-3xl max-h-96 p-0 m-0 flex items-center justify-center rounded-sm bg-background-dark lg:max-w-[400px]" 
           placement="center"
         >
-          <ModalContent>
+          <ModalContent className="w-full max-w-80 max-h-[700px] p-0 m-0 lg:p-4 ">
             <>
-              <ModalHeader className="text-3xl text-custom-brown">
-                {masita.nombre}
-              </ModalHeader>
-              <ModalBody>
-                {/* Cambiamos el layout a flex-col para que se apilen verticalmente */}
-                <div className="flex flex-col items-center space-y-6">
-                  {/* Carrusel */}
-                  <div className="w-full">
-                    <Carousel
-                      orientation="vertical"
-                      className="flex items-center gap-2"
-                    >
-                      <div className="relative w-full flex justify-center bg-background-dark">
-                        <CarouselMainContainer className="h-64 w-full">
-                          {masita.imagenes?.map((img, index) => (
-                            <SliderMainItem
-                              key={index}
-                              className="border border-muted flex items-center justify-center rounded-md bg-background-dark"
-                            >
-                              <Image
-                                src={img}
-                                alt={`Slide ${index + 1}`}
-                                className="w-full h-full max-h-[300px] object-cover rounded-md"
-                              />
-                            </SliderMainItem>
-                          ))}
-                        </CarouselMainContainer>
-                      </div>
-                      <CarouselThumbsContainer className="h-20 sm:h-40 w-full flex justify-center bg-background-dark">
-                        {masita.imagenes?.map((img, index) => (
-                          <SliderThumbItem
-                            key={index}
-                            index={index}
-                            className="rounded-md bg-transparent"
-                          >
-                            <span className="border border-muted flex items-center justify-center h-full w-full rounded-md cursor-pointer bg-background">
-                              <Image
-                                src={img}
-                                alt={`Slide ${index + 1}`}
-                                className="w-full h-full max-h-[100px] sm:max-h-[200px] object-cover rounded-md"
-                              />
-                            </span>
-                          </SliderThumbItem>
-                        ))}
-                      </CarouselThumbsContainer>
-                    </Carousel>
-                  </div>
+              <ModalBody className="relative p-0 m-0 bg-background-dark">
+              <div className="absolute inset-0 z-10 top-5 left-5 max-h-5">
+                <h1 className="text-white text-xl font-bold lg:text-2xl">{masita.nombre}</h1>
+              </div>
 
-                  {/* Descripción y contador */}
-                  <div className="w-full text-center">
-                    <p className="text-xl">{masita.descripcion}</p>
-                    <div className="mt-4">
-                      <span className="font-bold text-xl lg:text-2xl block mb-2">Cantidad:</span>
+                {/* Carrusel actualizado */}
+                <div className="w-full px-0 ">
+                  <Carousel>
+                    <CarouselNext />
+                    <CarouselPrevious />
+                    <div className="relative w-full ">
+                      <CarouselMainContainer className="w-full">
+                        {masita.imagenes?.map((img, index) => (
+                          <SliderMainItem key={index} className="bg-transparent">
+                            <Image
+                              src={img}
+                              alt={`Slide ${index + 1}`}
+                              className="w-full max-w-full h-[360px] object-cover rounded-xl" // Ajustamos el ancho
+                            />
+                          </SliderMainItem>
+                        ))}
+                      </CarouselMainContainer>
+
+                      {/* Indicadores de carrusel debajo de las imágenes */}
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20">
+                        <div className="flex justify-center">
+                          {masita.imagenes?.map((_, index) => (
+                            <CarouselIndicator key={index} index={index} />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </Carousel>
+                </div>
+
+                                  {/* Descripción y contador */}
+                    <div className="w-full text-center px-2">
+                    <p className="text-md ">{masita.descripcion}</p>
+                    <div className="">
+                      <span className="font-bold text-xl lg:text-2xl block mb-2">
+                        Cantidad:
+                      </span>
                       <QuantityCounter
                         minQuantity={9}
                         initialQuantity={quantity}
@@ -149,21 +137,15 @@ const MasitaCard: React.FC<MasitaCardProps> = ({
                       />
                     </div>
                   </div>
-                </div>
+                
               </ModalBody>
-              <ModalFooter className="flex justify-between">
+              <ModalFooter className="flex justify-between px-0 mx-0 bg-background-dark">
+
                 <Button
-                  className="font-bold border-custom-brown-light text-custom-brown-light"
-                  variant="ghost"
-                  onClick={onClose}
-                >
-                  Atrás
-                </Button>
-                <Button
-                  className="font-bold bg-custom-brown-light"
+                  className="font-bold bg-custom-brown-light px-10"
                   onClick={handleAddToCart}
                 >
-                  Añadir al carrito - Bs {totalPrice.toFixed(2)}
+                  Añadir al carrito - <span className="text-lg lg:text-xl">Bs {totalPrice.toFixed(2)}</span>
                 </Button>
               </ModalFooter>
             </>
